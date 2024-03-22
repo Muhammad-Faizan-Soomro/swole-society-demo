@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api/": "https://swole-society-api-demo.vercel.app",
-      "/uploads/": "https://swole-society-api-demo.vercel.app",
+      "/api/": "https://swole-society-api-demo.vercel.app/",
+      "/uploads/": "https://swole-society-api-demo.vercel.app/",
     },
   },
 })
