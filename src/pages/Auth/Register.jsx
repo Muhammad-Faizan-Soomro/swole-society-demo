@@ -47,11 +47,11 @@ const Register = () => {
   };
 
   return (
-    <section className="pl-[10rem] flex flex-wrap">
-      <div className="mr-[4rem] mt-[5rem]">
+    <section className="lg:pl-[10rem] flex flex-wrap pl-16 justify-center lg:justify-normal">
+      <div className="lg:mt-[3rem] mt-[2rem]">
         <h1 className="text-2xl font-semibold mb-4">Register</h1>
 
-        <form onSubmit={submitHandler} className="container w-[40rem]">
+        <form onSubmit={submitHandler} className="container w-fit">
           <div className="my-[2rem]">
             <label htmlFor="fname" className="block text-sm font-medium">
               First Name
@@ -59,7 +59,7 @@ const Register = () => {
             <input
               type="text"
               id="fname"
-              className="mt-1 p-2 border rounded w-full"
+              className="mt-1 p-2 border rounded w-[70vw] max-w-[20rem] border-black"
               placeholder="Enter First name"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
@@ -72,7 +72,7 @@ const Register = () => {
             <input
               type="text"
               id="lname"
-              className="mt-1 p-2 border rounded w-full"
+              className="mt-1 p-2 border rounded w-[70vw] max-w-[20rem] border-black"
               placeholder="Enter Last name"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
@@ -86,7 +86,7 @@ const Register = () => {
             <input
               type="email"
               id="email"
-              className="mt-1 p-2 border rounded w-full"
+              className="mt-1 p-2 border rounded w-[70vw] max-w-[20rem] border-black"
               placeholder="Enter email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -100,7 +100,7 @@ const Register = () => {
             <input
               type="password"
               id="password"
-              className="mt-1 p-2 border rounded w-full"
+              className="mt-1 p-2 border rounded w-[70vw] max-w-[20rem] border-black"
               placeholder="Enter password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -110,7 +110,7 @@ const Register = () => {
           <button
             disabled={isLoading}
             type="submit"
-            className="bg-pink-500 text-white px-4 py-2 rounded cursor-pointer my-[1rem]"
+            className="bg-pink-500 text-white px-4 py-2 rounded cursor-pointer my-[1rem] hover:bg-pink-900"
           >
             {isLoading ? "Registering..." : "Register"}
           </button>

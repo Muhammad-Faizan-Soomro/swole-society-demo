@@ -44,7 +44,7 @@ const Navigation = () => {
       style={{ zIndex: 9999 }}
       className={`${
         showSidebar ? "hidden" : "flex"
-      } xl:flex lg:flex md:hidden sm:hidden flex-col justify-between p-4 text-white bg-[#000] w-[4%] hover:w-[15%] h-[100vh]  fixed `}
+      } xl:flex lg:flex md:hidden sm:hidden flex-col justify-between p-4 text-white bg-[#000] w-[18vw] lg:w-[6vw] hover:w-[38vw] lg:hover:w-[15%] h-[100vh]  fixed `}
       id="navigation-container"
     >
       <div className="flex flex-col justify-center space-y-4">
@@ -53,7 +53,7 @@ const Navigation = () => {
           className="flex items-center transition-transform transform hover:translate-x-2"
         >
           <AiOutlineHome className="mr-2 mt-[3rem]" size={26} />
-          <span className="hidden nav-item-name mt-[3rem]">HOME</span>{" "}
+          <span className="hidden nav-item-name mt-[3rem] lg:text-lg text-sm">HOME</span>{" "}
         </Link>
 
         <Link
@@ -61,15 +61,15 @@ const Navigation = () => {
           className="flex items-center transition-transform transform hover:translate-x-2"
         >
           <AiOutlineShopping className="mr-2 mt-[3rem]" size={26} />
-          <span className="hidden nav-item-name mt-[3rem]">SHOP</span>{" "}
+          <span className="hidden nav-item-name mt-[3rem] lg:text-lg text-sm">SHOP</span>{" "}
         </Link>
 
-        <Link to="/cart" className="flex relative">
-          <div className="flex items-center transition-transform transform hover:translate-x-2">
-            <AiOutlineShoppingCart className="mt-[3rem] mr-2" size={26} />
-            <span className="hidden nav-item-name mt-[3rem]">CART</span>{" "}
-          </div>
-
+        <Link
+          to="/cart"
+          className="flex items-center transition-transform transform hover:translate-x-2"
+        >
+          <AiOutlineShoppingCart className="mt-[3rem] mr-2" size={26} />
+          <span className="hidden nav-item-name mt-[3rem] lg:text-lg text-sm">CART</span>{" "}
           <div className="absolute top-9">
             {cartItems.length > 0 && (
               <span>
@@ -204,7 +204,7 @@ const Navigation = () => {
                 className="flex items-center mt-5 transition-transform transform hover:translate-x-2"
               >
                 <AiOutlineLogin className="mr-2 mt-[4px]" size={26} />
-                <span className="hidden nav-item-name">LOGIN</span>
+                <span className="hidden nav-item-name lg:text-lg text-sm">LOGIN</span>
               </Link>
             </li>
             <li>
@@ -212,8 +212,8 @@ const Navigation = () => {
                 to="/register"
                 className="flex items-center mt-5 transition-transform transform hover:translate-x-2"
               >
-                <AiOutlineUserAdd size={26} />
-                <span className="hidden nav-item-name">REGISTER</span>
+                <AiOutlineUserAdd className="mr-2 mt-[4px]" size={26} />
+                <span className="hidden nav-item-name lg:text-lg text-sm">REGISTER</span>
               </Link>
             </li>
           </ul>
