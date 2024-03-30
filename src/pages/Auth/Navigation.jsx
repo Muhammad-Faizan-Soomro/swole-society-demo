@@ -210,7 +210,7 @@ const Navigation = () => {
             <li>
               <Link
                 to="/register"
-                className="flex items-center mt-5 mb-8 lg:mb-2 transition-transform transform hover:translate-x-2"
+                className="flex items-center mt-5 mb-11 lg:mb-2 transition-transform transform hover:translate-x-2"
               >
                 <AiOutlineUserAdd className="mr-2 mt-[4px]" size={26} />
                 <span className="hidden nav-item-name lg:text-lg text-sm">REGISTER</span>
