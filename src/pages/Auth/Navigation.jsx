@@ -44,7 +44,7 @@ const Navigation = () => {
       style={{ zIndex: 9999 }}
       className={`${
         showSidebar ? "hidden" : "flex"
-      } xl:flex lg:flex md:hidden sm:hidden flex-col justify-between p-4 text-white bg-[#000] w-[18vw] lg:w-[6vw] hover:w-[38vw] lg:hover:w-[15%] h-[100vh]  fixed `}
+      } flex flex-col justify-between p-4 text-white bg-[#000] h-[100vh] w-[18vw] max-w-[10rem] hover:w-[38vw] hover:max-w-[38vw] md:w-[10vw] md:hover:w-[30vw] lg:w-[8vw] lg:hover:w-[18vw] 2xl:w-[6vw] 2xl:hover:w-[13vw]  fixed `}
       id="navigation-container"
     >
       <div className="flex flex-col justify-center space-y-4">
@@ -210,7 +210,7 @@ const Navigation = () => {
             <li>
               <Link
                 to="/register"
-                className="flex items-center mt-5 mb-14 lg:mb-2 transition-transform transform hover:translate-x-2"
+                className="flex items-center mt-5 lg:mb-1 transition-transform mb-11 transform hover:translate-x-2"
               >
                 <AiOutlineUserAdd className="mr-2 mt-[4px]" size={26} />
                 <span className="hidden nav-item-name lg:text-lg text-sm">REGISTER</span>
