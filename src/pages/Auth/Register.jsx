@@ -47,7 +47,7 @@ const Register = () => {
   };
 
   return (
-    <section className="flex flex-wrap pl-16 justify-center">
+    <section className="flex flex-wrap lg:pl-16 justify-center">
       <div className="lg:mt-[3rem] mt-[2rem]">
         <h1 className="text-2xl font-semibold mb-4">Register</h1>
 
