@@ -14,7 +14,7 @@ const ProductCard = ({ p }) => {
   };
 
   return (
-    <div className="max-w-sm relative bg-white rounded-lg shaodw dark:bg-gray-800 dark:border-gray-700">
+    <div className="relative bg-white rounded-lg shaodw dark:bg-gray-800 dark:border-gray-700">
       <section className="relative">
         <Link to={`/product/${p._id}`}>
           <img
@@ -26,14 +26,14 @@ const ProductCard = ({ p }) => {
         </Link>
       </section>
 
-      <div className="p-5">
+      <div className="py-5">
         <div className="flex justify-between">
           <h5 className="mb-2 text-xl text-whiet dark:text-white">{p?.name}</h5>
 
-          <p className=" font-semibold text-pink-500">
+          <p className=" font-semibold text-pink-500 text-sm lg:text-md">
             {p?.price?.toLocaleString("en-US", {
               style: "currency",
-              currency: "USD",
+              currency: "PKR",
             })}
           </p>
         </div>
