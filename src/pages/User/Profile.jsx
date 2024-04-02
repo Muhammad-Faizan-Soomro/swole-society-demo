@@ -52,7 +52,7 @@ const Profile = () => {
   return (
     <div className="container mx-auto p-4 mt-[2rem]">
       <div className="flex justify-center align-center md:flex md:space-x-4">
-        <div className="md:w-1/3">
+        <div className="md:w-1/3 w-[90vw]">
           <h2 className="text-2xl font-semibold mb-4">Update Profile</h2>
           <form onSubmit={submitHandler}>
             <div className="mb-4">
@@ -60,7 +60,7 @@ const Profile = () => {
               <input
                 type="text"
                 placeholder="Enter first name"
-                className="form-input p-4 rounded-sm w-full"
+                className="form-input p-2 rounded-md w-full border-2 border-black"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               />
@@ -70,7 +70,7 @@ const Profile = () => {
               <input
                 type="text"
                 placeholder="Enter last name"
-                className="form-input p-4 rounded-sm w-full"
+                className="form-input p-2 rounded-md w-full border-2 border-black"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
@@ -81,7 +81,7 @@ const Profile = () => {
               <input
                 type="email"
                 placeholder="Enter email"
-                className="form-input p-4 rounded-sm w-full"
+                className="form-input p-2 rounded-md w-full border-2 border-black"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -92,7 +92,7 @@ const Profile = () => {
               <input
                 type="password"
                 placeholder="Enter old password"
-                className="form-input p-4 rounded-sm w-full"
+                className="form-input p-2 rounded-md w-full border-2 border-black"
                 value={oldPassword}
                 onChange={(e) => setOldPassword(e.target.value)}
               />
@@ -103,7 +103,7 @@ const Profile = () => {
               <input
                 type="password"
                 placeholder="Enter new password"
-                className="form-input p-4 rounded-sm w-full"
+                className="form-input p-2 rounded-md w-full border-2 border-black"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
               />
@@ -119,7 +119,7 @@ const Profile = () => {
 
               <Link
                 to="/user-orders"
-                className="bg-pink-600 text-white py-2 px-4 rounded hover:bg-pink-700"
+                className="bg-pink-500 text-white py-2 px-4 rounded hover:bg-pink-700"
               >
                 My Orders
               </Link>
