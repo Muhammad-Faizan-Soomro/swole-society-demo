@@ -27,7 +27,7 @@ const Cart = () => {
       <div className="container flex justify-around items-start wrap mx-auto mt-8">
         {cartItems.length === 0 ? (
           <div>
-            Your cart is empty <Link to="/shop">Go To Shop</Link>
+            Your cart is empty!! <Link to="/shop" className="underline">Click Here To Go To Shop</Link>
           </div>
         ) : (
           <>
@@ -45,12 +45,12 @@ const Cart = () => {
                   </div>
 
                   <div className="flex-1 ml-4">
-                    <Link to={`/product/${item.data._id}`} className="text-pink-500">
+                    <Link to={`/product/${item.data._id}`} className="text-black">
                       {item.data.name}
                     </Link>
 
                     <div className="mt-2 text-white font-bold">
-                      $ {item.data.price}
+                      PKR {item.data.price}
                     </div>
                   </div>
 
@@ -88,14 +88,14 @@ const Cart = () => {
                   </h2>
 
                   <div className="text-2xl font-bold">
-                    ${" "}
+                    PKR{" "}
                     {cartItems
                       .reduce((acc, item) => acc + item.qty * item.data.price, 0)
                       .toFixed(2)}
                   </div>
 
                   <button
-                    className="bg-pink-500 mt-4 py-2 px-4 rounded-full text-lg w-full"
+                    className="bg-pink-500 mt-4 py-2 px-4 rounded-full text-lg w-full hover:bg-pink-900 text-white"
                     disabled={cartItems.length === 0}
                     onClick={checkoutHandler}
                   >
