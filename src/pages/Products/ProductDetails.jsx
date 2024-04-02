@@ -13,7 +13,7 @@ import {
   FaClock,
   FaShoppingCart,
   FaStar,
-  FaStore,
+  FaBackward,
 } from "react-icons/fa";
 import moment from "moment";
 import Ratings from "./Ratings";
@@ -64,10 +64,12 @@ const ProductDetails = () => {
 
   return (
     <>
-      <div>
+      <div className="ml-[8rem] gap-2 hidden lg:flex">
+        <FaBackward size={18} />
+
         <Link
-          to="/"
-          className="text-white font-semibold hover:underline ml-[10rem]"
+          to="/shop"
+          className="text-black font-semibold hover:underline -mt-1"
         >
           Go Back
         </Link>
@@ -81,98 +83,79 @@ const ProductDetails = () => {
         </Message>
       ) : (
         <>
-          <div className="flex flex-wrap relative items-between mt-[2rem] ml-[10rem]">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 lg:relative mt-[2rem] lg:ml-[8rem] overflow-hidden">
             <div>
               <img
                 src={product.data.image}
                 alt={product.data.name}
-                className="w-full xl:w-[50rem] lg:w-[45rem] md:w-[30rem] sm:w-[20rem] mr-[2rem]"
+                className="w-[90vw] xl:w-[50rem] lg:w-[45rem] lg:mb-4 m-2 mx-auto lg:mx-0"
               />
             </div>
 
-            <div className="flex flex-col justify-between">
-              <h2 className="text-2xl font-semibold">{product.data.name}</h2>
-              <p className="my-4 xl:w-[35rem] lg:w-[35rem] md:w-[30rem] text-[#B0B0B0]">
+            <div className="flex flex-col self-start lg:grid lg:grid-rows-2 lg:grid-cols-2 lg:ml-4 ml-2">
+              <h2 className="lg:text-2xl ml-2 lg:ml-0 font-semibold mt-3">
+                {product.data.name}
+              </h2>
+
+              <p className="text-2xl lg:text-4xl lg:font-extrabold lg:-mx-24 right-0 absolute mx-6 font-semibold lg:left-0 lg:relative">
+                PKR {product.data.price}
+              </p>
+
+              <p className="mt-5 xl:w-[35rem] lg:w-[35rem] md:w-[30rem] text-black opacity-85 ml-2 lg:ml-0">
                 {product.data.description}
               </p>
 
-              <p className="text-5xl my-4 font-extrabold">
-                $ {product.data.price}
-              </p>
-
-              <div className="flex items-center justify-between w-[20rem]">
-                <div className="one">
-                  <h1 className="flex items-center mb-6 w-[20rem]">
-                    <FaClock className="mr-2 text-white" /> Added:{" "}
-                    {moment(product.data.createAt).fromNow()}
-                  </h1>
-                  <h1 className="flex items-center mb-6">
-                    <FaStar className="mr-2 text-white" /> Reviews:{" "}
-                    {product.data.numReviews}
-                  </h1>
-                </div>
-
-                <div className="two">
-                  <h1 className="flex items-center mb-6">
-                    <FaStar className="mr-2 text-white" /> Ratings: {rating}
-                  </h1>
-                  <h1 className="flex items-center mb-6">
-                    <FaShoppingCart className="mr-2 text-white" /> Quantity:{" "}
-                    {product.data.quantity}
-                  </h1>
-                  <h1 className="flex items-center mb-6 w-[10rem]">
-                    <FaBox className="mr-2 text-white" /> In Stock:{" "}
-                    {product.data.countInStock}
-                  </h1>
-                </div>
-              </div>
-
-              <div className="flex justify-between flex-wrap">
-                <Ratings
-                  value={product.data.rating}
-                  text={`${product.data.numReviews} reviews`}
-                />
-
-                {product.data.countInStock > 0 && (
-                  <div>
-                    <select
-                      value={qty}
-                      onChange={(e) => setQty(e.target.value)}
-                      className="p-2 w-[6rem] rounded-lg text-black"
-                    >
-                      {[...Array(product.data.countInStock).keys()].map((x) => (
-                        <option key={x + 1} value={x + 1}>
-                          {x + 1}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                )}
-              </div>
-
-              <div className="btn-container">
-                <button
-                  onClick={addToCartHandler}
-                  disabled={product.data.countInStock === 0}
-                  className="bg-pink-600 text-white py-2 px-4 rounded-lg mt-4 md:mt-0"
-                >
-                  Add To Cart
-                </button>
-              </div>
+              <h1 className="flex items-center mt-4 lg:-mx-24 ml-2 lg:ml-0">
+                <FaBox className="mr-2 text-black" /> In Stock:{" "}
+                {product.data.countInStock}
+              </h1>
             </div>
 
-            <div className="mt-[5rem] container flex flex-wrap items-start justify-between ml-[10rem]">
-              <ProductTabs
-                loadingProductReview={loadingProductReview}
-                userInfo={userInfo}
-                submitHandler={submitHandler}
-                rating={rating}
-                setRating={setRating}
-                comment={comment}
-                setComment={setComment}
-                product={product}
+            <div className="flex flex-col lg:flex-row lg:justify-between flex-wrap mt-5 lg:mt-0 ml-2 lg:ml-0">
+              <Ratings
+                value={product.data.rating}
+                text={`${product.data.numReviews} reviews`}
               />
+
+              {product.data.countInStock > 0 && (
+                <div className="flex gap-4 items-center mt-4 lg:mt-0 ml-2 lg:ml-0">
+                  <label>Quantity</label>
+                  <select
+                    value={qty}
+                    onChange={(e) => setQty(e.target.value)}
+                    className="p-2 w-[6rem] rounded-lg text-black border-black border-2"
+                  >
+                    {[...Array(product.data.countInStock).keys()].map((x) => (
+                      <option key={x + 1} value={x + 1}>
+                        {x + 1}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="btn-container">
+                    <button
+                      onClick={addToCartHandler}
+                      disabled={product.data.countInStock === 0}
+                      className="bg-pink-600 text-white py-2 px-4 rounded-lg md:mt-0 hover:bg-pink-900"
+                    >
+                      Add To Cart
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
+          </div>
+
+          <div className="lg:mt-[5rem] mt-4  flex flex-wrap lg:justify-between lg:ml-[8rem] lg:items-center">
+            <ProductTabs
+              loadingProductReview={loadingProductReview}
+              userInfo={userInfo}
+              submitHandler={submitHandler}
+              rating={rating}
+              setRating={setRating}
+              comment={comment}
+              setComment={setComment}
+              product={product}
+            />
           </div>
         </>
       )}
