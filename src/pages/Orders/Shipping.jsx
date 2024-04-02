@@ -40,14 +40,14 @@ const Shipping = () => {
   return (
     <div className="container mx-auto mt-10">
       <ProgressSteps step1 step2 />
-      <div className="mt-[10rem] flex justify-around items-center flex-wrap">
+      <div className="mt-[8rem] flex justify-around items-center flex-wrap">
         <form onSubmit={submitHandler} className="w-[40rem]">
           <h1 className="text-2xl font-semibold mb-4">Shipping</h1>
           <div className="mb-4">
-            <label className="block text-white mb-2">Address</label>
+            <label className="block text-black mb-2">Address</label>
             <input
               type="text"
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border-2 border-black rounded"
               placeholder="Enter address"
               value={address}
               required
@@ -55,10 +55,10 @@ const Shipping = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-white mb-2">City</label>
+            <label className="block text-black mb-2">City</label>
             <input
               type="text"
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border-2 border-black rounded"
               placeholder="Enter city"
               value={city}
               required
@@ -66,10 +66,10 @@ const Shipping = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-white mb-2">Postal Code</label>
+            <label className="block text-black mb-2">Postal Code</label>
             <input
               type="text"
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border-2 border-black rounded"
               placeholder="Enter postal code"
               value={postalCode}
               required
@@ -77,10 +77,10 @@ const Shipping = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-white mb-2">Country</label>
+            <label className="block text-black mb-2">Country</label>
             <input
               type="text"
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border-2 border-black rounded"
               placeholder="Enter country"
               value={country}
               required
@@ -89,7 +89,7 @@ const Shipping = () => {
           </div>
 
           <button
-            className="bg-pink-500 text-white py-2 px-4 rounded-full text-lg w-full"
+            className="bg-pink-500 text-white py-2 px-4 rounded-full text-lg w-full hover:bg-pink-900"
             type="submit"
           >
             Continue
