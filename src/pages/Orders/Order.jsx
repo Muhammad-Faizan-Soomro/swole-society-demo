@@ -38,23 +38,23 @@ const Order = () => {
   ) : error ? (
     <Messsage variant="danger">{error.data.message}</Messsage>
   ) : (
-    <div className="container ml-[8rem] w-[90vw]">
-      <div className="md:w-2/3 pr-4">
+    <div className="mx-2 lg:mx-0 lg:container lg:ml-[8rem] lg:w-[90vw]">
+      <div className="lg:w-2/3 lg:pr-4">
         <div className="border-black mt-5 pb-4 mb-5">
           {order.data.orderItems.length === 0 ? (
             <Messsage>Order is empty</Messsage>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full">
+              <table className="w-full mt-4 lg:mt-0">
                 <thead className="border-b-2 border-black">
                   <tr>
-                    <th className="px-1 py-2 text-left align-top font-bold">
+                    <th className="px-1 py-2 text-left lg:align-top font-bold">
                       Image
                     </th>
                     <th className="px-1 py-2 text-left font-bold">Product</th>
                     <th className="px-1 py-2 text-left font-bold">Quantity</th>
                     <th className="px-1 py-2 text-left font-bold">
-                      Unit Price
+                      Price
                     </th>
                     <th className="px-1 py-2 text-left font-bold">Total</th>
                   </tr>
@@ -89,9 +89,9 @@ const Order = () => {
         </div>
       </div>
 
-      <div className="flex justify-around flex-wrap">
+      <div className="flex flex-col lg:flex-row justify-around flex-wrap">
         <div>
-          <div className="mt-5 border-gray-300 border-2 p-4 mb-4 w-[30vw]">
+          <div className="mt-5 border-gray-300 border-2 p-4 mb-4 lg:w-[30vw]">
             <h2 className="text-xl font-bold mb-2">Shipping</h2>
             <p className="mb-4 mt-4">
               <strong className="text-pink-500">Order:</strong> {order.data._id}
@@ -131,7 +131,7 @@ const Order = () => {
             )}
           </div>
         </div>
-        <div className="border-2 border-gray-300 mt-5 p-4 w-[30vw]">
+        <div className="border-2 border-gray-300 mt-5 p-4 lg:w-[30vw]">
           <h2 className="text-xl font-bold mb-2">Order Summary</h2>
           <div className="flex justify-between mb-2">
             <span>Items</span>

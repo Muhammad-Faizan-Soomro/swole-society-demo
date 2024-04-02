@@ -27,10 +27,10 @@ const ProductCard = ({ p }) => {
       </section>
 
       <div className="py-5">
-        <div className="flex justify-between">
+        <div className="flex flex-col lg:flex-row justify-between">
           <h5 className="mb-2 text-xl text-whiet dark:text-white">{p?.name}</h5>
 
-          <p className=" font-semibold text-pink-500 text-sm lg:text-md">
+          <p className=" font-semibold text-pink-500 text-sm lg:text-md mb-2 lg:mb-0">
             {p?.price?.toLocaleString("en-US", {
               style: "currency",
               currency: "PKR",
@@ -38,7 +38,7 @@ const ProductCard = ({ p }) => {
           </p>
         </div>
 
-        <p className="mb-3 font-normal text-gray-600">
+        <p className="hidden lg:block mb-3 font-normal text-gray-600">
           {p?.description?.substring(0, 60)} ...
         </p>
 

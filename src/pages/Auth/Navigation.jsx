@@ -5,7 +5,23 @@ import {
   AiOutlineLogin,
   AiOutlineUserAdd,
   AiOutlineShoppingCart,
+  AiOutlineDashboard,
+  AiOutlineLogout,
+  AiOutlineUser,
+  AiOutlineDropbox,
+  AiOutlineBars,
+  AiOutlineOrderedList,
+  AiOutlineAppstoreAdd,
+  AiOutlineInbox,
+  AiOutlineGroup,
+  AiOutlineUngroup,
+  AiOutlineUsergroupAdd,
+  AiOutlineCluster,
+  AiOutlineCustomerService,
+  AiOutlineMoneyCollect,
 } from "react-icons/ai";
+import { FaBox } from "react-icons/fa6";
+import { FaReceipt, FaFirstOrder, FaList, FaBoxOpen } from "react-icons/fa";
 import Hamburger from "hamburger-react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -65,6 +81,7 @@ const Navigation = () => {
       dispatch(logout());
       navigate("/login");
       setDropdownOpen(false);
+      toggleScroll();
     } catch (error) {
       console.error(error);
     }
@@ -79,29 +96,132 @@ const Navigation = () => {
             showSideDrawer ? "flex" : "hidden"
           } w-[100vw] absolute right-0 overflow  bg-black opacity-90 h-[100vh]`}
         >
-          <div className="w-[90vw] flex items-center flex-col justify-center gap-10">
-            <Link to="/" className="flex text-white items-center" onClick={()=>toggleScroll(false)}>
+          <div
+            className={` ${
+              userInfo && userInfo.data.user.isAdmin
+                ? "mt-8 gap-y-[1.4rem]"
+                : "justify-center gap-8"
+            } w-[90vw] flex items-center flex-col `}
+          >
+            <Link
+              to="/"
+              className="flex text-white items-center"
+              onClick={toggleScroll}
+            >
               <AiOutlineHome className="mr-2" size={26} />
               <span className="text-lg text-white">HOME</span>{" "}
             </Link>
 
-            <Link to="/shop" className="flex text-white items-center" onClick={()=>toggleScroll(false)}>
+            <Link
+              to="/shop"
+              className="flex text-white items-center"
+              onClick={toggleScroll}
+            >
               <AiOutlineShopping className="mr-2" size={26} />
               <span className="text-lg text-white">SHOP</span>{" "}
             </Link>
 
-            <Link to="/cart" className="flex text-white items-center" onClick={()=>toggleScroll(false)}>
+            <Link
+              to="/cart"
+              className="flex text-white items-center"
+              onClick={toggleScroll}
+            >
               <AiOutlineShoppingCart className="mr-2" size={26} />
               <span className="text-lg text-white">CART</span>{" "}
             </Link>
-            <Link to="/login" className="flex items-center text-white" onClick={()=>toggleScroll(false)}>
-              <AiOutlineLogin className="mr-2" size={26} />
-              <span className="text-lg text-white">LOGIN</span>
-            </Link>
-            <Link to="/register" className="flex items-center text-white" onClick={()=>toggleScroll(false)}>
-              <AiOutlineUserAdd className="mr-2" size={26} />
-              <span className="text-lg text-white">REGISTER</span>
-            </Link>
+
+            {userInfo && (
+              <>
+                {userInfo.data.user.isAdmin && (
+                  <>
+                    <Link
+                      to="/admin/dashboard"
+                      className="flex items-center text-white"
+                      onClick={toggleScroll}
+                    >
+                      <AiOutlineDashboard className="mr-2" size={26} />
+                      <span className="text-lg text-white">Dashboard</span>
+                    </Link>
+                    <Link
+                      to="/admin/productlist"
+                      className="flex items-center text-white"
+                      onClick={toggleScroll}
+                    >
+                      <AiOutlineAppstoreAdd className="mr-2" size={26} />
+                      <span className="text-lg text-white">ADD PRODUCT</span>
+                    </Link>
+                    <Link
+                      to="/admin/allproductslist"
+                      className="flex items-center text-white"
+                      onClick={toggleScroll}
+                    >
+                      <AiOutlineInbox className="mr-2" size={24} />
+                      <span className="text-lg text-white">ALL PRODUCTS</span>
+                    </Link>
+                    <Link
+                      to="/admin/categorylist"
+                      className="flex items-center text-white"
+                      onClick={toggleScroll}
+                    >
+                      <AiOutlineBars className="mr-2" size={26} />
+                      <span className="text-lg text-white">CATEGORY</span>
+                    </Link>
+                    <Link
+                      to="/admin/orderlist"
+                      className="flex items-center text-white"
+                      onClick={toggleScroll}
+                    >
+                      <AiOutlineGroup className="mr-2" size={22} />
+                      <span className="text-lg text-white">ORDERS</span>
+                    </Link>
+                    <Link
+                      to="/admin/userlist"
+                      className="flex items-center text-white"
+                      onClick={toggleScroll}
+                    >
+                      <AiOutlineUsergroupAdd className="mr-2" size={26} />
+                      <span className="text-lg text-white">USERS</span>
+                    </Link>
+                  </>
+                )}
+                <Link
+                  to="/profile"
+                  className="flex items-center text-white"
+                  onClick={toggleScroll}
+                >
+                  <AiOutlineUser className="mr-2" size={26} />
+                  <span className="text-lg text-white">PROFILE</span>
+                </Link>
+                <Link
+                  className="flex items-center text-white"
+                  onClick={logoutHandler}
+                >
+                  <AiOutlineLogout className="mr-2" size={26} />
+                  <span className="text-lg text-white">LOGOUT</span>
+                </Link>
+              </>
+            )}
+
+            {!userInfo && (
+              <>
+                <Link
+                  to="/login"
+                  className="flex items-center text-white"
+                  onClick={toggleScroll}
+                >
+                  <AiOutlineLogin className="mr-2" size={26} />
+                  <span className="text-lg text-white">LOGIN</span>
+                </Link>
+                <Link
+                  to="/register"
+                  className="flex items-center text-white"
+                  onClick={toggleScroll}
+                >
+                  <AiOutlineUserAdd className="mr-2" size={26} />
+                  <span className="text-lg text-white">REGISTER</span>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>

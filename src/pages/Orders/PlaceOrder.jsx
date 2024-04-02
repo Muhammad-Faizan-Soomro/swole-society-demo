@@ -45,15 +45,17 @@ const PlaceOrder = () => {
     <>
       <ProgressSteps step1 step2 step3 />
 
-      <div className="container ml-[8rem] mt-8 w-[90vw]">
+      <div className="lg:container lg:ml-[8rem] mt-8 lg:w-[90vw]">
         {cart.cartItems.length === 0 ? (
           <Message>Your cart is empty</Message>
         ) : (
-          <div className="overflow-x-auto ml-[8rem]">
+          <div className="overflow-x-auto lg:ml-[8rem] mx-3 lg:mx-0">
             <table className="w-full border-collapse">
               <thead>
                 <tr>
-                  <td className="px-1 py-2 text-left align-top font-bold">Image</td>
+                  <td className="px-1 py-2 text-left align-top font-bold">
+                    Image
+                  </td>
                   <td className="px-1 py-2 text-left font-bold">Product</td>
                   <td className="px-1 py-2 text-left font-bold">Quantity</td>
                   <td className="px-1 py-2 text-left font-bold">Price</td>
@@ -73,7 +75,9 @@ const PlaceOrder = () => {
                     </td>
 
                     <td className="p-2">
-                      <Link to={`/product/${item.data.product}`}>{item.data.name}</Link>
+                      <Link to={`/product/${item.data.product}`}>
+                        {item.data.name}
+                      </Link>
                     </td>
                     <td className="p-2">{item.qty}</td>
                     <td className="p-2">{item.data.price.toFixed(2)}</td>
@@ -87,24 +91,25 @@ const PlaceOrder = () => {
           </div>
         )}
 
-        <div className="mt-8">
-          <h2 className="text-2xl font-semibold mb-5">Order Summary</h2>
-          <div className="flex justify-between flex-wrap p-8 bg-white">
+        <div className="mt-10 mx-[10vw] lg:mx-0">
+          <div className="lg:flex justify-center lg:justify-around flex-wrap bg-white">
             <ul className="text-lg">
-              <li>
-                <span className="font-semibold mb-4">Items:</span> $
+              <h2 className="text-xl lg:text-2xl font-semibold mb-5">
+                Order Summary
+              </h2>
+              <li className="mb-2">
+                <span className="font-semibold">Items:</span> PKR{" "}
                 {cart.itemsPrice}
               </li>
-              <li>
-                <span className="font-semibold mb-4">Shipping:</span> $
+              <li className="mb-2">
+                <span className="font-semibold">Shipping:</span> PKR{" "}
                 {cart.shippingPrice}
               </li>
-              <li>
-                <span className="font-semibold mb-4">Tax:</span> $
-                {cart.taxPrice}
+              <li className="mb-2">
+                <span className="font-semibold">Tax:</span> PKR {cart.taxPrice}
               </li>
-              <li>
-                <span className="font-semibold mb-4">Total:</span> $
+              <li className="mb-2">
+                <span className="font-semibold">Total:</span> PKR{" "}
                 {cart.totalPrice}
               </li>
             </ul>
@@ -112,7 +117,9 @@ const PlaceOrder = () => {
             {error && <Message variant="danger">{error.data.message}</Message>}
 
             <div>
-              <h2 className="text-2xl font-semibold mb-4">Shipping</h2>
+              <h2 className="text-2xl font-semibold mb-4 mt-4 lg:mt-0">
+                Shipping
+              </h2>
               <p>
                 <strong>Address:</strong> {cart.shippingAddress.address},{" "}
                 {cart.shippingAddress.city} {cart.shippingAddress.postalCode},{" "}
@@ -121,14 +128,16 @@ const PlaceOrder = () => {
             </div>
 
             <div>
-              <h2 className="text-2xl font-semibold mb-4">Payment Method</h2>
+              <h2 className="text-2xl font-semibold mb-4 mt-4 lg:mt-0">
+                Payment Method
+              </h2>
               <strong>Method:</strong> {cart.paymentMethod}
             </div>
           </div>
 
           <button
             type="button"
-            className="bg-pink-500 text-white py-2 px-4 rounded-full text-lg w-[20vw] mt-4 hover:bg-pink-900"
+            className="bg-pink-500 text-white py-2 px-4 rounded-full text-lg max-w-[20rem] w-[70vw] lg:w-[20vw] mt-4 hover:bg-pink-900 lg:right-0 lg:absolute lg:mr-16"
             disabled={cart.cartItems === 0}
             onClick={placeOrderHandler}
           >
