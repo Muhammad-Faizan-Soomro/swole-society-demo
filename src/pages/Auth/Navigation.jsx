@@ -8,20 +8,12 @@ import {
   AiOutlineDashboard,
   AiOutlineLogout,
   AiOutlineUser,
-  AiOutlineDropbox,
   AiOutlineBars,
-  AiOutlineOrderedList,
   AiOutlineAppstoreAdd,
   AiOutlineInbox,
   AiOutlineGroup,
-  AiOutlineUngroup,
   AiOutlineUsergroupAdd,
-  AiOutlineCluster,
-  AiOutlineCustomerService,
-  AiOutlineMoneyCollect,
 } from "react-icons/ai";
-import { FaBox } from "react-icons/fa6";
-import { FaReceipt, FaFirstOrder, FaList, FaBoxOpen } from "react-icons/fa";
 import Hamburger from "hamburger-react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -87,9 +79,10 @@ const Navigation = () => {
     }
   };
 
+
   useEffect(() => {
     const cookie = document.cookie
-    if(cookie !== ''){
+    if(cookie == ''){
       localStorage.clear()
     }
   })
