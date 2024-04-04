@@ -82,12 +82,7 @@ const Navigation = () => {
 
 
   useEffect(() => {
-    setCookie(document.cookie)
-    if(cookie !== ''){
-      console.log('not empty')
-    }else{
-      console.log('empty')
-    }
+    console.log(document.cookie)
   })
   return (
     <>
