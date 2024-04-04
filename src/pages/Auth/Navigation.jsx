@@ -81,11 +81,13 @@ const Navigation = () => {
   };
 
 
-  useEffect(() => {
-    if (typeof window != "undefined" && window.document) {
-      console.log(document.cookie);
-    }
-  })
+  console.log("cookies: ",document.cookie)
+  
+  
+  if (typeof window != "undefined" && window.document) {
+    console.log(document.cookie);
+  }
+  
   return (
     <>
       <div className="lg:hidden right-0 absolute">
