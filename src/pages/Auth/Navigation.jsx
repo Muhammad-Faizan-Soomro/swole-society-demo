@@ -21,6 +21,7 @@ import "./Navigation.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../../redux/api/usersApiSlice";
 import { logout } from "../../redux/features/auth/authSlice";
+import Cookies from "js-cookie";
 
 const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -28,7 +29,6 @@ const Navigation = () => {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
-  const [cookie,setCookie] = useState("gibberish")
 
   const [showSideDrawer, setshowSideDrawer] = useState(false);
 
@@ -80,14 +80,8 @@ const Navigation = () => {
     }
   };
 
+  console.log(Cookies.get('accessToken'))
 
-  console.log("cookies: ",document.cookie)
-  
-  
-  if (typeof window != "undefined" && window.document) {
-    console.log(document.cookie);
-  }
-  
   return (
     <>
       <div className="lg:hidden right-0 absolute">
