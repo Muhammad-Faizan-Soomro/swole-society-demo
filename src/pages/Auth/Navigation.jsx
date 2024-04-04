@@ -86,6 +86,13 @@ const Navigation = () => {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    const cookie = document.cookie
+    if(cookie == ''){
+      localStorage.clear()
+    }
+  })
   return (
     <>
       <div className="lg:hidden right-0 absolute">
