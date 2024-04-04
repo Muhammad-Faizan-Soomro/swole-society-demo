@@ -28,7 +28,7 @@ const Navigation = () => {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
-  const [cookie,setCookie] = useState(false)
+  const [cookie,setCookie] = useState("gibberish")
 
   const [showSideDrawer, setshowSideDrawer] = useState(false);
 
@@ -88,7 +88,7 @@ const Navigation = () => {
     }else{
       console.log('empty')
     }
-  },[cookie])
+  })
   return (
     <>
       <div className="lg:hidden right-0 absolute">
