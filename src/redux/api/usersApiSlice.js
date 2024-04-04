@@ -57,6 +57,11 @@ export const userApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["User"],
     }),
+    getCookies: builder.query({
+      query: () => ({
+        url: `${USERS_URL}/getCookie`,
+      }),
+    }),
   }),
 });
 
@@ -69,4 +74,5 @@ export const {
   useGetUserDetailsQuery,
   useUpdateUserMutation,
   useDeleteUserMutation,
+  useGetCookiesQuery,
 } = userApiSlice;
