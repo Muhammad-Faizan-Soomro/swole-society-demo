@@ -28,6 +28,7 @@ const Navigation = () => {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
+  const [cookie,setCookie] = useState(false)
 
   const [showSideDrawer, setshowSideDrawer] = useState(false);
 
@@ -81,11 +82,13 @@ const Navigation = () => {
 
 
   useEffect(() => {
-    const cookie = document.cookie
-    if(cookie == ''){
-      localStorage.clear()
+    setCookie(document.cookie)
+    if(cookie !== ''){
+      console.log('not empty')
+    }else{
+      console.log('empty')
     }
-  })
+  },[cookie])
   return (
     <>
       <div className="lg:hidden right-0 absolute">
