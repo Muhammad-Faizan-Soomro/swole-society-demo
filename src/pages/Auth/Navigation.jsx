@@ -20,7 +20,6 @@ import { useNavigate } from "react-router-dom";
 import "./Navigation.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  useGetCookiesQuery,
   useLogoutMutation,
 } from "../../redux/api/usersApiSlice";
 import { logout } from "../../redux/features/auth/authSlice";
@@ -30,7 +29,7 @@ const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const { cartItems } = useSelector((state) => state.cart);
 
-  const { data: cooki, refetch, isLoading, error } = useGetCookiesQuery();
+  // const { data: cooki, refetch, isLoading, error } = useGetCookiesQuery();
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
@@ -74,12 +73,12 @@ const Navigation = () => {
   const [logoutApiCall] = useLogoutMutation();
 
   const logoutHandler = async () => {
-    if (Object.keys(cooki.data).length == 0) {
-      dispatch(logout());
-      navigate("/login");
-      setDropdownOpen(false);
-      toggleScroll();
-    } else {
+    // if (Object.keys(cooki.data).length == 0) {
+    //   dispatch(logout());
+    //   navigate("/login");
+    //   setDropdownOpen(false);
+    //   toggleScroll();
+    // } else {
       try {
         await logoutApiCall().unwrap();
         dispatch(logout());
@@ -89,12 +88,11 @@ const Navigation = () => {
       } catch (error) {
         console.error(error);
       }
-    }
   };
 
-  useEffect(() => {
-    refetch();
-  });
+  // useEffect(() => {
+  //   refetch();
+  // });
 
   return (
     <>
