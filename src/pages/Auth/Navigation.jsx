@@ -89,7 +89,7 @@ const Navigation = () => {
 
   useEffect(() => {
     const cookie = document.cookie
-    if(cookie == ''){
+    if(cookie !== ''){
       localStorage.clear()
     }
   })
