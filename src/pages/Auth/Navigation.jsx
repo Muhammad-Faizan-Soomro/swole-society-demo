@@ -82,7 +82,9 @@ const Navigation = () => {
 
 
   useEffect(() => {
-    console.log(document.cookie)
+    if (typeof window != "undefined" && window.document) {
+      console.log(document.cookie);
+    }
   })
   return (
     <>
