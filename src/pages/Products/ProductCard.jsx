@@ -28,7 +28,7 @@ const ProductCard = ({ p }) => {
 
       <div className="py-5">
         <div className="flex flex-col lg:flex-row justify-between">
-          <h5 className="mb-2 text-xl text-whiet dark:text-white">{p?.name}</h5>
+          <h5 className="mb-2 text-xl">{p?.name}</h5>
 
           <p className=" font-semibold text-pink-500 text-sm lg:text-md mb-2 lg:mb-0">
             {p?.price?.toLocaleString("en-US", {
@@ -45,7 +45,7 @@ const ProductCard = ({ p }) => {
         <section className="flex justify-between items-center">
           <Link
             to={`/product/${p._id}`}
-            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-pink-700 rounded-lg hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800"
+            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-pink-700 rounded-lg hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300"
           >
             Read More
             <svg
