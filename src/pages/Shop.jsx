@@ -101,7 +101,7 @@ const Shop = () => {
                         type="checkbox"
                         id="red-checkbox"
                         onChange={(e) => handleCheck(e.target.checked, c._id)}
-                        className="w-4 h-4 text-pink-600 bg-black border-gray-300 rounded focus:ring-pink-500 dark:focus:ring-pink-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        className="w-4 h-4 text-pink-600 bg-black border-gray-300 rounded focus:ring-pink-50 focus:ring-2"
                       />
 
                       <label
@@ -171,7 +171,7 @@ const Shop = () => {
                       type="checkbox"
                       id="red-checkbox"
                       onChange={(e) => handleCheck(e.target.checked, c._id)}
-                      className="w-4 h-4 text-pink-600 bg-black border-gray-300 rounded focus:ring-pink-500 dark:focus:ring-pink-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      className="w-4 h-4 text-pink-600 bg-black border-gray-300 rounded focus:ring-pink-500 focus:ring-2"
                     />
 
                     <label
