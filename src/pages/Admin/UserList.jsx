@@ -13,16 +13,15 @@ const UserList = () => {
   }, [refetch]);
 
   return (
-    <div className="p-24">
-      <h1 className="text-2xl font-semibold mb-4">Users</h1>
+    <div className="lg:ml-[8rem] mt-10">
+      <h1 className="text-2xl font-semibold mb-4 ml-4">Users</h1>
       {isLoading ? (
         <Loader />
       ) : error ? (
         <Message variant="error">{error?.data?.message || error.error}</Message>
       ) : (
-        <div className="flex flex-col md:flex-row">
-          {/* <AdminMenu /> */}
-          <table className="w-full md:w-4/5 mx-auto">
+        <div className="flex flex-col md:flex-row overflow-x-auto">
+          <table className="w-full md:w-4/5 mx-auto ">
             <thead>
               <tr>
                 <th className="px-4 py-2 text-left">FIRST NAME</th>

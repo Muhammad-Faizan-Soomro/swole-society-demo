@@ -11,22 +11,22 @@ const AllProducts = () => {
   }, [products]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="ml-[8rem]">Loading...</div>;
   }
 
   if (isError) {
-    return <div>Error loading products</div>;
+    return <div className="ml-[8rem]">Error loading products.. Kindly logout and re-login</div>;
   }
 
   return (
     <>
-      <div className="container mx-[9rem]">
-        <div className="flex flex-col  md:flex-row">
+      <div className="lg:mx-[8rem] mt-5 lg:mt-0">
+        <div className="flex flex-col md:flex-row">
           <div className="p-3">
-            <div className="ml-[2rem] text-xl font-bold h-12">
+            <div className="text-xl font-bold h-12">
               All Products ({products.data.length})
             </div>
-            <div className="flex flex-wrap justify-around items-center">
+            <div className="flex flex-wrap justify-between items-center">
               {products.data.map((product) => (
                 <Link
                   key={product._id}
@@ -37,7 +37,7 @@ const AllProducts = () => {
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-[10rem] object-cover"
+                      className="w-20 h-20 object-cover"
                     />
                     <div className="p-4 flex flex-col justify-around">
                       <div className="flex justify-between">
@@ -50,18 +50,18 @@ const AllProducts = () => {
                         </p>
                       </div>
 
-                      <p className="text-gray-400 xl:w-[30rem] lg:w-[30rem] md:w-[20rem] sm:w-[10rem] text-sm mb-4">
+                      <p className="text-gray-400 w-[30vw] text-sm mb-4">
                         {product?.description?.substring(0, 160)}...
                       </p>
 
-                      <div className="flex justify-between">
+                      <div className="flex justify-between gap-x-4">
                         <Link
                           to={`/admin/product/update/${product._id}`}
-                          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-pink-700 rounded-lg hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800"
+                          className="w-[5rem] lg:w-[6rem] lg:inline-flex lg:items-center px-3 py-2 text-sm text-center text-white bg-pink-700 rounded-lg hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300"
                         >
-                          Update Product
+                          Update
                           <svg
-                            className="w-3.5 h-3.5 ml-2"
+                            className="w-3.5 h-3.5 ml-2 hidden lg:block"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -76,7 +76,7 @@ const AllProducts = () => {
                             />
                           </svg>
                         </Link>
-                        <p>$ {product?.price}</p>
+                        <p>PKR {product?.price}</p>
                       </div>
                     </div>
                   </div>

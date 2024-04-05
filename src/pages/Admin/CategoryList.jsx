@@ -95,9 +95,8 @@ const CategoryList = () => {
   };
 
   return (
-    <div className="ml-[10rem] flex flex-col md:flex-row">
-      {/* <AdminMenu /> */}
-      <div className="md:w-3/4 p-3">
+    <div className="lg:ml-[8rem] mt-5 flex flex-col md:flex-row">
+      <div className="p-3">
         <div className="h-12">Manage Categories</div>
         <CategoryForm
           value={name}
@@ -105,9 +104,9 @@ const CategoryList = () => {
           handleSubmit={handleCreateCategory}
         />
         <br />
-        <hr />
+        <hr className="border-2 border-black"/>
 
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap flex-col md:flex-row">
           {categories?.data.map((category) => (
             <div key={category._id}>
               <button
