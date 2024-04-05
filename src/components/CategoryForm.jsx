@@ -10,7 +10,7 @@ const CategoryForm = ({
       <form onSubmit={handleSubmit} className="space-y-3">
         <input
           type="text"
-          className="py-3 px-4 border rounded-lg w-full"
+          className="py-3 px-4 border-2 border-black rounded-lg w-full"
           placeholder="Enter category name"
           value={value}
           onChange={(e) => setValue(e.target.value)}
