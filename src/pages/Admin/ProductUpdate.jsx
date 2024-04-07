@@ -4,7 +4,6 @@ import {
   useUpdateProductMutation,
   useDeleteProductMutation,
   useGetProductByIdQuery,
-  useUploadProductImageMutation,
 } from "../../redux/api/productApiSlice";
 import { useFetchCategoriesQuery } from "../../redux/api/categoryApiSlice";
 import { toast } from "react-toastify";
@@ -29,7 +28,7 @@ const AdminProductUpdate = () => {
   // Fetch categories using RTK Query
   const { data: categories = [] } = useFetchCategoriesQuery();
 
-  const [uploadProductImage] = useUploadProductImageMutation();
+  // const [uploadProductImage] = useUploadProductImageMutation();
 
   // Define the update product mutation
   const [updateProduct] = useUpdateProductMutation();
@@ -62,14 +61,14 @@ const AdminProductUpdate = () => {
     // console.log(formData)
 
     try {
-      const res = await uploadProductImage(formData).unwrap();
-      setImage(res.image);
-      console.log(res);
+      // const res = await uploadProductImage(formData).unwrap();
+      // setImage(res.image);
+      // console.log(res);
       const { data } = await updateProduct({
         productId: params._id,
         formData: {
           name,
-          imageLocalPath: res.image,
+          imageLocalPath: image,
           description,
           price,
           category,
@@ -123,7 +122,9 @@ const AdminProductUpdate = () => {
                   name="image"
                   accept="image/*"
                   onChange={(e) => setImage(e.target.files[0])}
-                  className={!image ? "hidden" : "text-black w-[70vw] max-w-[20rem]"}
+                  className={
+                    !image ? "hidden" : "text-black w-[70vw] max-w-[20rem]"
+                  }
                 />
               </label>
             </div>
