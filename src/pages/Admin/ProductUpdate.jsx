@@ -64,7 +64,6 @@ const AdminProductUpdate = () => {
     try {
       const res = await uploadProductImage(formData).unwrap();
       setImage(res.image);
-      console.log(res);
       const { data } = await updateProduct({
         productId: params._id,
         formData: {
