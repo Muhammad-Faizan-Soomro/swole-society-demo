@@ -30,7 +30,7 @@ const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const { cartItems } = useSelector((state) => state.cart);
 
-  const { data: cookie, refetch, isLoading, error } = useGetCookiesQuery();
+  // const { data: cookie, refetch, isLoading, error } = useGetCookiesQuery();
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
@@ -74,27 +74,28 @@ const Navigation = () => {
   const [logoutApiCall] = useLogoutMutation();
 
   const logoutHandler = async () => {
-    if (Object.keys(cookie.data).length == 0) {
+    // if (Object.keys(cookie.data).length == 0) {
+    //   dispatch(logout());
+    //   navigate("/login");
+    //   setDropdownOpen(false);
+    //   toggleScroll();
+    // } else {
+    try {
+      await logoutApiCall().unwrap();
       dispatch(logout());
       navigate("/login");
       setDropdownOpen(false);
       toggleScroll();
-    } else {
-      try {
-        await logoutApiCall().unwrap();
-        dispatch(logout());
-        navigate("/login");
-        setDropdownOpen(false);
-        toggleScroll();
-      } catch (error) {
-        console.error(error);
-      }
+    } catch (error) {
+      console.error(error);
     }
   };
 
-  useEffect(() => {
-    refetch();
-  });
+  // useEffect(() => {
+  //   refetch();
+  // });
+
+  window.onbeforeunload = logoutHandler;
 
   return (
     <>
