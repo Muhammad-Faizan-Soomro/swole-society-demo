@@ -65,7 +65,7 @@ const ProductList = () => {
       setImage(res.image);
       const { data } = await createProduct({
         name,
-        imageLocalPath: image,
+        imageLocalPath: res.image,
         description,
         price,
         category,
