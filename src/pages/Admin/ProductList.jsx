@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCreateProductMutation } from "../../redux/api/productApiSlice";
+import {
+  useCreateProductMutation,
+  useUploadProductImageMutation,
+} from "../../redux/api/productApiSlice";
 import { useFetchCategoriesQuery } from "../../redux/api/categoryApiSlice";
 import { toast } from "react-toastify";
 //import AdminMenu from "./AdminMenu";
@@ -16,7 +19,7 @@ const ProductList = () => {
   const navigate = useNavigate();
 
   const [createProduct] = useCreateProductMutation();
-  // const [uploadProductImage] = useUploadProductImageMutation();
+  const [uploadProductImage] = useUploadProductImageMutation();
   const { data: categories } = useFetchCategoriesQuery();
 
   // const handleSubmit = async (e) => {
@@ -54,12 +57,12 @@ const ProductList = () => {
   // };
 
   const uploadFileHandler = async (e) => {
-    // const formData = new FormData();
-    // formData.append("image", image);
+    const formData = new FormData();
+    formData.append("image", image);
 
     try {
-      // const res = await uploadProductImage(formData).unwrap();
-      // setImage(res.image);
+      const res = await uploadProductImage(formData).unwrap();
+      setImage(res.image);
       const { data } = await createProduct({
         name,
         imageLocalPath: image,
