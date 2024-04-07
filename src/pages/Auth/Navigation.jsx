@@ -91,12 +91,6 @@ const Navigation = () => {
     }
   };
 
-  // useEffect(() => {
-  //   refetch();
-  // });
-
-  window.onbeforeunload = logoutHandler;
-
   return (
     <>
       <div className="lg:hidden right-0 absolute">
