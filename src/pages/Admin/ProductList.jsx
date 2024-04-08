@@ -56,6 +56,21 @@ const ProductList = () => {
   //   }
   // };
 
+  if (typeof window != "undefined" && window.document) {
+    document.addEventListener("readystatechange", (event) => {
+      if (event.target.readyState === "complete") {
+        const select = document.getElementById("select");
+        const option = document.createElement("option");
+        option.value = "";
+        option.selected = true;
+        option.hidden = true;
+        option.disabled = true;
+        option.innerHTML = "-- Please Select a Category --";
+        select.appendChild(option);
+      }
+    });
+  }
+
   const uploadFileHandler = async (e) => {
     const formData = new FormData();
     formData.append("image", image);
@@ -162,6 +177,7 @@ const ProductList = () => {
               <div>
                 <label htmlFor="">Category</label> <br />
                 <select
+                  id="select"
                   placeholder="Choose Category"
                   className="p-4 mb-3 w-[70vw] max-w-[20rem] border-2 border-black rounded-lg bg-white text-black"
                   onChange={(e) => setCategory(e.target.value)}
