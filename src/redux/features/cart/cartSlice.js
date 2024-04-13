@@ -11,11 +11,15 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const { user, rating, numReviews, reviews, ...item } = action.payload;
-      const existItem = state.cartItems.find((x) => x.data._id === item.data._id);
+      const existItem = state.cartItems.find(
+        (x) => x.data._id === item.data._id && x.colors === item.colors
+      );
 
       if (existItem) {
         state.cartItems = state.cartItems.map((x) =>
-          x.data._id === existItem.data._id ? item : x
+          x.data._id === existItem.data._id && x.colors == existItem.colors
+            ? item
+            : x
         );
       } else {
         state.cartItems = [...state.cartItems, item];
@@ -24,7 +28,14 @@ const cartSlice = createSlice({
     },
 
     removeFromCart: (state, action) => {
-      state.cartItems = state.cartItems.filter((x) => x.data._id !== action.payload);
+      const { id, colors } = action.payload;
+      const itemWithSameId = state.cartItems.filter((x) => x.data._id === id);
+      const itemToNotBeRemoved = itemWithSameId.filter(
+        (x) => x.colors !== colors
+      );
+      state.cartItems = state.cartItems.filter((x) => x.data._id !== id);
+      state.cartItems = state.cartItems.concat(itemToNotBeRemoved);
+
       return updateCart(state);
     },
 

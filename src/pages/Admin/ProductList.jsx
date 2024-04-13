@@ -9,7 +9,14 @@ import { toast } from "react-toastify";
 //import AdminMenu from "./AdminMenu";
 
 const ProductList = () => {
-  const [image, setImage] = useState("");
+  const [imageOne, setImageOne] = useState("");
+  const [imageTwo, setImageTwo] = useState("");
+  const [imageThree, setImageThree] = useState("");
+  const [imageFour, setImageFour] = useState("");
+  const [colorOne, setColorOne] = useState("");
+  const [colorTwo, setColorTwo] = useState("");
+  const [colorThree, setColorThree] = useState("");
+  const [colorFour, setColorFour] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -72,15 +79,23 @@ const ProductList = () => {
   }
 
   const uploadFileHandler = async (e) => {
+    e.preventDefault();
     const formData = new FormData();
-    formData.append("image", image);
-
+    formData.append("image", imageOne);
+    formData.append("image", imageTwo);
+    formData.append("image", imageThree);
+    formData.append("image", imageFour);
     try {
       const res = await uploadProductImage(formData).unwrap();
-      setImage(res.image);
+      const images = [
+        { url: res.image[0], color: colorOne },
+        { url: res.image[1], color: colorTwo },
+        { url: res.image[2], color: colorThree },
+        { url: res.image[3], color: colorFour },
+      ];
       const { data } = await createProduct({
         name,
-        imageLocalPath: res.image,
+        imageLocalPath: images,
         description,
         price,
         category,
@@ -103,21 +118,93 @@ const ProductList = () => {
       <div className="flex flex-col md:flex-row">
         <div className="p-3">
           <div className="h-12">Create Product</div>
-
-          <div className="mb-3">
+          <div className="mb-3 flex gap-x-4">
             <label className="border-2 border-black text-black px-4 block w-full text-center rounded-lg cursor-pointer font-bold py-11">
-              {image ? image.name : "Upload Image"}
+              {imageOne ? imageOne.name : "Upload Image 1"}
 
               <input
                 type="file"
                 name="image"
                 accept="image/*"
-                onChange={(e) => setImage(e.target.files[0])}
+                onChange={(e) => setImageOne(e.target.files[0])}
                 className={
-                  !image ? "hidden" : "text-black w-[70vw] max-w-[20rem]"
+                  !imageOne ? "hidden" : "text-black w-[70vw] max-w-[20rem]"
                 }
               />
             </label>
+            <input
+              placeholder="Color of Image 1"
+              type="text"
+              className="p-4 mb-3 w-[70vw] max-w-[20rem] border-2 border-black rounded-lg bg-white text-black"
+              value={colorOne}
+              onChange={(e) => setColorOne(e.target.value)}
+            />
+          </div>
+          <div className="mb-3 flex gap-x-3">
+            <label className="border-2 border-black text-black px-4 block w-full text-center rounded-lg cursor-pointer font-bold py-11">
+              {imageTwo ? imageTwo.name : "Upload Image 2"}
+
+              <input
+                type="file"
+                name="image"
+                accept="image/*"
+                onChange={(e) => setImageTwo(e.target.files[0])}
+                className={
+                  !imageTwo ? "hidden" : "text-black w-[70vw] max-w-[20rem]"
+                }
+              />
+            </label>
+            <input
+              placeholder="Color of Image 2"
+              type="text"
+              className="p-4 mb-3 w-[70vw] max-w-[20rem] border-2 border-black rounded-lg bg-white text-black"
+              value={colorTwo}
+              onChange={(e) => setColorTwo(e.target.value)}
+            />
+          </div>
+          <div className="mb-3 flex gap-x-3">
+            <label className="border-2 border-black text-black px-4 block w-full text-center rounded-lg cursor-pointer font-bold py-11">
+              {imageThree ? imageThree.name : "Upload Image 3"}
+
+              <input
+                type="file"
+                name="image"
+                accept="image/*"
+                onChange={(e) => setImageThree(e.target.files[0])}
+                className={
+                  !imageThree ? "hidden" : "text-black w-[70vw] max-w-[20rem]"
+                }
+              />
+            </label>
+            <input
+              placeholder="Color of Image 3"
+              type="text"
+              className="p-4 mb-3 w-[70vw] max-w-[20rem] border-2 border-black rounded-lg bg-white text-black"
+              value={colorThree}
+              onChange={(e) => setColorThree(e.target.value)}
+            />
+          </div>
+          <div className="mb-3 flex gap-x-3">
+            <label className="border-2 border-black text-black px-4 block w-full text-center rounded-lg cursor-pointer font-bold py-11">
+              {imageFour ? imageFour.name : "Upload Image 4"}
+
+              <input
+                type="file"
+                name="image"
+                accept="image/*"
+                onChange={(e) => setImageFour(e.target.files[0])}
+                className={
+                  !imageFour ? "hidden" : "text-black w-[70vw] max-w-[20rem]"
+                }
+              />
+            </label>
+            <input
+              placeholder="Color of Image 4"
+              type="text"
+              className="p-4 mb-3 w-[70vw] max-w-[20rem] border-2 border-black rounded-lg bg-white text-black"
+              value={colorFour}
+              onChange={(e) => setColorFour(e.target.value)}
+            />
           </div>
 
           <div className="">

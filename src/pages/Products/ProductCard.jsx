@@ -1,17 +1,28 @@
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/features/cart/cartSlice";
 import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
 
 const ProductCard = ({ p }) => {
+  const [color, setColor] = useState("black");
   const dispatch = useDispatch();
 
+  // useEffect(()=>{
+  //   localStorage.setItem('colors', "black");
+  // },[])
+
   const addToCartHandler = (product, qty) => {
-    console.log(product)
+    console.log(product);
     dispatch(addToCart({ ...product, qty }));
     toast.success("Item added successfully");
   };
+
+  const changeColor = (color)=>{
+    setColor(color)
+    localStorage.setItem('colors',color)
+  }
 
   return (
     <div className="relative bg-white rounded-lg shadow">
@@ -19,7 +30,7 @@ const ProductCard = ({ p }) => {
         <Link to={`/product/${p._id}`}>
           <img
             className="cursor-pointer w-full"
-            src={p.image}
+            src={color == "black" ? p.image[0].url : p.image[2].url}
             alt={p.name}
             style={{ height: "170px", objectFit: "cover" }}
           />
@@ -41,6 +52,18 @@ const ProductCard = ({ p }) => {
         <p className="hidden lg:block mb-3 font-normal text-gray-600">
           {p?.description?.substring(0, 60)} ...
         </p>
+
+        <div className="flex items-center">
+          Colors:{" "}
+          <div
+            onClick={() => changeColor("black")}
+            className={`${color == 'black' ? 'border-2 border-red-500' : ""} font-bold bg-black rounded-full font-mono w-4 h-4 right-0 absolute hover:cursor-pointer hover:border-red-500 hover:border-2 `}
+          />
+          <div
+            onClick={() => changeColor("white")}
+            className={`${color == 'white' ? 'border-2 border-red-500' : ""} font-bold bg-stone-200 rounded-full font-mono w-4 h-4 right-0 absolute mr-5 hover:cursor-pointer hover:border-red-500 hover:border-2`}
+          />
+        </div>
 
         <section className="flex justify-between items-center">
           <Link

@@ -15,7 +15,11 @@ const AllProducts = () => {
   }
 
   if (isError) {
-    return <div className="ml-[8rem]">Error loading products.. Kindly logout and re-login</div>;
+    return (
+      <div className="ml-[8rem]">
+        Error loading products.. Kindly logout and re-login
+      </div>
+    );
   }
 
   return (

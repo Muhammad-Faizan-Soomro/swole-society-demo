@@ -2,20 +2,23 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FaTrash } from "react-icons/fa";
 import { addToCart, removeFromCart } from "../redux/features/cart/cartSlice";
+import { useId } from "react";
 
 const Cart = () => {
+  const colors = localStorage.getItem("colors") || "";
+  const id = useId();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
-  const addToCartHandler = (product, qty) => {
-    dispatch(addToCart({ ...product, qty }));
+  const addToCartHandler = (product, qty, colors) => {
+    dispatch(addToCart({ ...product, qty, colors }));
   };
 
-  const removeFromCartHandler = (id) => {
-    dispatch(removeFromCart(id));
+  const removeFromCartHandler = (id, colors) => {
+    dispatch(removeFromCart({ id, colors }));
   };
 
   const checkoutHandler = () => {
@@ -36,16 +39,19 @@ const Cart = () => {
         ) : (
           <>
             <div className="flex flex-col lg:w-[80%]">
-              <h1 className="text-xl lg:text-2xl font-semibold mb-4">Shopping Cart</h1>
+              <h1 className="text-xl lg:text-2xl font-semibold mb-4">
+                Shopping Cart
+              </h1>
 
               {cartItems.map((item) => (
-                <div
-                  key={item.data._id}
-                  className="flex items-center mb-[1rem] pb-2"
-                >
+                <div key={id} className="flex items-center mb-[1rem] pb-2">
                   <div className="w-[5rem] h-[5rem]">
                     <img
-                      src={item.data.image}
+                      src={
+                        item.colors == "black"
+                          ? item.data.image[0].url
+                          : item.data.image[2].url
+                      }
                       alt={item.data.name}
                       className="w-full h-full object-cover rounded"
                     />
@@ -69,7 +75,11 @@ const Cart = () => {
                       className="w-full p-1 border-2 border-black rounded text-black"
                       value={item.qty}
                       onChange={(e) =>
-                        addToCartHandler(item, Number(e.target.value))
+                        addToCartHandler(
+                          item,
+                          Number(e.target.value),
+                          item.colors
+                        )
                       }
                     >
                       {[...Array(item.data.countInStock).keys()].map((x) => (
@@ -83,7 +93,9 @@ const Cart = () => {
                   <div>
                     <button
                       className="text-red-500 lg:mr-[5rem]"
-                      onClick={() => removeFromCartHandler(item.data._id)}
+                      onClick={() =>
+                        removeFromCartHandler(item.data._id, item.colors)
+                      }
                     >
                       <FaTrash className="ml-[1rem] mt-[.5rem]" />
                     </button>

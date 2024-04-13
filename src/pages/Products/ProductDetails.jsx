@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -21,6 +21,7 @@ import ProductTabs from "./ProductTabs";
 import { addToCart } from "../../redux/features/cart/cartSlice";
 
 const ProductDetails = () => {
+  const colors = localStorage.getItem("colors") || "";
   const { id: productId } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -58,8 +59,15 @@ const ProductDetails = () => {
   };
 
   const addToCartHandler = () => {
-    dispatch(addToCart({ ...product, qty }));
+    dispatch(addToCart({ ...product, qty, colors }));
     navigate("/cart");
+  };
+
+  const changeColor = (color) => {
+    if (!(colors == color)) {
+      localStorage.setItem("colors", color);
+      location.replace(location.href);
+    }
   };
 
   return (
@@ -86,7 +94,11 @@ const ProductDetails = () => {
           <div className="flex flex-col lg:grid lg:grid-cols-2 lg:relative mt-[2rem] lg:ml-[8rem] overflow-hidden">
             <div>
               <img
-                src={product.data.image}
+                src={
+                  colors == "black"
+                    ? product.data.image[0].url
+                    : product.data.image[2].url
+                }
                 alt={product.data.name}
                 className="w-[90vw] xl:w-[50rem] lg:w-[45rem] lg:mb-4 m-2 mx-auto lg:mx-0"
               />
@@ -109,6 +121,22 @@ const ProductDetails = () => {
                 <FaBox className="mr-2 text-black" /> In Stock:{" "}
                 {product.data.countInStock}
               </h1>
+
+              <div className="flex items-center mt-4">
+                <div className="mr-16">Colors: </div>
+                <div
+                  onClick={() => changeColor("black")}
+                  className={`${
+                    colors == "black" ? "border-2 border-red-500" : ""
+                  } font-bold bg-black rounded-full font-mono w-4 h-4 hover:cursor-pointer hover:border-red-500 hover:border-2 `}
+                />
+                <div
+                  onClick={() => changeColor("white")}
+                  className={`${
+                    colors == "white" ? "border-2 border-red-500" : ""
+                  } font-bold bg-stone-200 rounded-full font-mono w-4 h-4 ml-2 hover:cursor-pointer hover:border-red-500 hover:border-2`}
+                />
+              </div>
             </div>
 
             <div className="flex flex-col lg:flex-row lg:justify-between flex-wrap mt-5 lg:mt-0 ml-2 lg:ml-0">
