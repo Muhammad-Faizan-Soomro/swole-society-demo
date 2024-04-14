@@ -104,25 +104,29 @@ const CategoryList = () => {
           handleSubmit={handleCreateCategory}
         />
         <br />
-        <hr className="border-2 border-black"/>
+        <hr className="border-2 border-black" />
 
         <div className="flex flex-wrap flex-col md:flex-row">
-          {categories?.data.map((category) => (
-            <div key={category._id}>
-              <button
-                className="bg-white border border-pink-500 text-pink-500 py-2 px-4 rounded-lg m-3 hover:bg-pink-500 hover:text-white focus:outline-none foucs:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
-                onClick={() => {
-                  {
-                    setModalVisible(true);
-                    setSelectedCategory(category);
-                    setUpdatingName(category.name);
-                  }
-                }}
-              >
-                {category.name}
-              </button>
-            </div>
-          ))}
+          {categories?.data.map((category) =>
+            category.name !== "-- Please Select Category --" ? (
+              <div key={category._id}>
+                <button
+                  className="bg-white border border-pink-500 text-pink-500 py-2 px-4 rounded-lg m-3 hover:bg-pink-500 hover:text-white focus:outline-none foucs:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
+                  onClick={() => {
+                    {
+                      setModalVisible(true);
+                      setSelectedCategory(category);
+                      setUpdatingName(category.name);
+                    }
+                  }}
+                >
+                  {category.name}
+                </button>
+              </div>
+            ) : (
+              ""
+            )
+          )}
         </div>
 
         <Modal isOpen={modalVisible} onClose={() => setModalVisible(false)}>

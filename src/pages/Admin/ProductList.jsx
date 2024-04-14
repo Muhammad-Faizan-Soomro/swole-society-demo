@@ -63,20 +63,6 @@ const ProductList = () => {
   //   }
   // };
 
-  if (window !== "undefined" && window.document) {
-    document.addEventListener("readystatechange", (event) => {
-      if (event.target.readyState === "complete") {
-        const select = document.getElementById("select");
-        const option = document.createElement("option");
-        option.value = "";
-        option.selected = true;
-        option.hidden = true;
-        option.disabled = true;
-        option.innerHTML = "-- Please Select a Category --";
-        select.appendChild(option);
-      }
-    });
-  }
 
   const uploadFileHandler = async (e) => {
     e.preventDefault();
