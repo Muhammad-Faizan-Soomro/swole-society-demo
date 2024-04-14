@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 //import AdminMenu from "./AdminMenu";
 
 const ProductList = () => {
+  const [loading, setLoading] = useState(false);
   const [imageOne, setImageOne] = useState("");
   const [imageTwo, setImageTwo] = useState("");
   const [imageThree, setImageThree] = useState("");
@@ -63,7 +64,6 @@ const ProductList = () => {
   //   }
   // };
 
-
   const uploadFileHandler = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -72,6 +72,7 @@ const ProductList = () => {
     formData.append("image", imageThree);
     formData.append("image", imageFour);
     try {
+      setLoading(true);
       const res = await uploadProductImage(formData).unwrap();
       const images = [
         { url: res.image[0], color: colorOne },
@@ -89,12 +90,14 @@ const ProductList = () => {
         quantity,
       });
       if (data.error) {
+        setLoading(false);
         toast.error("Product create failed. Try Again.");
       } else {
         toast.success(`${data.data.name} is created`);
         navigate("/");
       }
     } catch (error) {
+      setLoading(false);
       toast.error(error?.data?.message || error.error);
     }
   };
@@ -266,9 +269,10 @@ const ProductList = () => {
 
             <button
               onClick={uploadFileHandler}
+              disabled={loading}
               className="py-4 px-10 mt-5 rounded-full text-white hover:bg-pink-900 text-lg font-bold bg-pink-600"
             >
-              Submit
+              {loading ? "Please Wait..." : "Submit"}
             </button>
           </div>
         </div>
