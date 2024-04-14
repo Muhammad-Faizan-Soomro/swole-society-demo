@@ -92,7 +92,7 @@ const Shop = () => {
 
               <div className="p-5 w-[15rem]">
                 {categories.data?.map((c) =>
-                  c.name !== "-- Please Select Category --" ? (
+                  c.name != "-- Please Select Category --" ? (
                     <div key={c._id} className="mb-2">
                       <div className="flex ietms-center mr-4">
                         <input
@@ -165,25 +165,29 @@ const Shop = () => {
             </h2>
 
             <div className="p-5 w-[15rem]">
-              {categories.data?.map((c) => (
-                <div key={c._id} className="mb-2">
-                  <div className="flex ietms-center mr-4">
-                    <input
-                      type="checkbox"
-                      id="red-checkbox"
-                      onChange={(e) => handleCheck(e.target.checked, c._id)}
-                      className="w-4 h-4 text-pink-600 bg-black border-gray-300 rounded focus:ring-pink-500 focus:ring-2"
-                    />
+              {categories.data?.map((c) =>
+                c.name != "-- Please Select Category --" ? (
+                  <div key={c._id} className="mb-2">
+                    <div className="flex ietms-center mr-4">
+                      <input
+                        type="checkbox"
+                        id="red-checkbox"
+                        onChange={(e) => handleCheck(e.target.checked, c._id)}
+                        className="w-4 h-4 text-pink-600 bg-black border-gray-300 rounded focus:ring-pink-500 focus:ring-2"
+                      />
 
-                    <label
-                      htmlFor="pink-checkbox"
-                      className="ml-2 text-sm font-medium text-black"
-                    >
-                      {c.name}
-                    </label>
+                      <label
+                        htmlFor="pink-checkbox"
+                        className="ml-2 text-sm font-medium text-black"
+                      >
+                        {c.name}
+                      </label>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ) : (
+                  ""
+                )
+              )}
             </div>
 
             <h2 className="h4 text-center py-2 bg-gray-300 rounded-full mb-2">
