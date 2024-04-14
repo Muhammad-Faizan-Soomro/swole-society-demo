@@ -63,7 +63,7 @@ const ProductList = () => {
   //   }
   // };
 
-  if (window.document) {
+  if (window !== "undefined" && window.document) {
     document.addEventListener("readystatechange", (event) => {
       if (event.target.readyState === "complete") {
         const select = document.getElementById("select");
