@@ -22,6 +22,7 @@ import { addToCart } from "../../redux/features/cart/cartSlice";
 
 const ProductDetails = () => {
   const [colors, setColors] = useState(localStorage.getItem("colors") || "");
+  const [sizeDiv, setSizeDiv] = useState(false);
   const { id: productId } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -98,49 +99,78 @@ const ProductDetails = () => {
               />
             </div>
 
-            <div className="flex flex-col ml-2 gap-y-3">
-              <h2 className="lg:text-xl ml-2 lg:ml-0 font-semibold mt-3">
-                {product.data.name}
-              </h2>
-
-              <p className="text-2xl lg:text-3xl lg:font-extrabold font-semibold">
-                PKR {product.data.price}
-              </p>
-
-              <p className="xl:w-[35rem] lg:w-[35rem] md:w-[30rem] text-black opacity-85 ml-2 lg:ml-0">
-                {product.data.description}
-              </p>
-
-              <h1 className="flex items-center mt-4 lg:-mx-24 ml-2 lg:ml-0">
-                <FaBox className="mr-2 text-black" /> In Stock:{" "}
-                {product.data.countInStock}
-              </h1>
-
-              <div className="flex items-center mt-4 gap-4">
-                <div className="mr-16">Size: </div>
-                <div
-                  onClick={() => changeColor("small")}
-                  className={`${
-                    colors == "small"
-                      ? "p-1 bg-black text-white"
-                      : "border-2 border-black"
-                  } text-sm p-1 cursor-pointer`}
+            {sizeDiv ? (
+              <div className="flex flex-col ml-2 gap-y-3 mt-2">
+                <img
+                  src="https://res.cloudinary.com/dq69j0hgr/image/upload/v1713725823/1713724980166_1_w9erkp.webp"
+                  alt="Size Chart"
+                  className="h-[65vh] w-[90%] lg:ml-0 ml-2"
+                />
+                <span
+                  onClick={() => setSizeDiv(!sizeDiv)}
+                  className="mt-2 underline cursor-pointer hover:translate-y-1"
                 >
-                  Small
-                </div>
-                <div
-                  onClick={() => changeColor("medium")}
-                  className={`${
-                    colors == "medium"
-                      ? "bg-black text-white p-1"
-                      : "border-2 border-black"
-                  } text-xs p-1 cursor-pointer`}
-                >
-                  Medium
-                </div>
-                <div className="line-through border-2 border-black">Large</div>
+                  {sizeDiv ? "Hide Size Chart" : "View Size Chart"}
+                </span>
               </div>
-            </div>
+            ) : (
+              <div className="flex flex-col ml-2 gap-y-3">
+                <h2 className="lg:text-xl lg:ml-0 font-semibold mt-3">
+                  Batman compression tee
+                </h2>
+
+                <p className="text-2xl lg:text-3xl lg:font-extrabold font-semibold ">
+                  PKR {product.data.price}
+                </p>
+
+                <p className="xl:w-[35vw] lg:w-[35vw] text-black opacity-85 lg:ml-0">
+                  The compression fabric locks in warmth and provides a snug fit
+                  to keep you comfortable and protected in cooler climates..
+                  Made from high quality fabric, this compression shirt offers
+                  enhanced fit and breathability for optimal performance. -
+                  Ultra tight fit - Second skin feel - Rapid moisture absorption
+                  for quick sweat evaporation.{" "}
+                </p>
+
+                <h1 className="flex items-center mt-4 lg:-mx-24 ml-2 lg:ml-0">
+                  <FaBox className="mr-2 text-black" /> In Stock:{" "}
+                  {product.data.countInStock}
+                </h1>
+
+                <div className="flex items-center mt-4 gap-2">
+                  <div className="mr-16">Size: </div>
+                  <div
+                    onClick={() => changeColor("small")}
+                    className={`${
+                      colors == "small"
+                        ? "p-1 bg-black text-white"
+                        : "border-2 border-black"
+                    } text-sm p-1 cursor-pointer`}
+                  >
+                    Small
+                  </div>
+                  <div
+                    onClick={() => changeColor("medium")}
+                    className={`${
+                      colors == "medium"
+                        ? "bg-black text-white p-1"
+                        : "border-2 border-black"
+                    } text-xs p-1 cursor-pointer`}
+                  >
+                    Medium
+                  </div>
+                  <div className="line-through border-2 border-black">
+                    Large
+                  </div>
+                </div>
+                <span
+                  onClick={() => setSizeDiv(!sizeDiv)}
+                  className="mt-2 underline cursor-pointer hover:translate-y-1"
+                >
+                  {sizeDiv ? "Hide Size Chart" : "View Size Chart"}
+                </span>
+              </div>
+            )}
 
             <div className="flex flex-col lg:flex-row lg:justify-between flex-wrap mt-5 lg:mt-0 ml-2 lg:ml-0">
               <Ratings
