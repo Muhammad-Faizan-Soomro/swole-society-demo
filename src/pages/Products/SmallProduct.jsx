@@ -6,7 +6,7 @@ const SmallProduct = ({ product }) => {
     <div className="w-[100vw] md:w-[60vw] lg:w-[20rem] lg:ml-[2rem] p-3">
       <div className="relative">
         <img
-          src={product.image}
+          src={product.image[0].url}
           alt={product.name}
           className="h-auto rounded"
         />

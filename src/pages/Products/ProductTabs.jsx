@@ -46,14 +46,6 @@ const ProductTabs = ({
         >
           All Reviews
         </div>
-        <div
-          className={`flex-1 p-4 cursor-pointer text-lg ${
-            activeTab === 3 ? "font-bold" : ""
-          }`}
-          onClick={() => handleTabClick(3)}
-        >
-          Related Products
-        </div>
       </section>
 
       {/* Second Part */}
