@@ -10,7 +10,6 @@ const ProductCard = ({ p }) => {
   const dispatch = useDispatch();
 
   const addToCartHandler = (product, qty) => {
-    console.log(product);
     dispatch(addToCart({ ...product, qty }));
     toast.success("Item added successfully");
   };

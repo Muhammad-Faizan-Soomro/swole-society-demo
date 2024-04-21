@@ -41,8 +41,7 @@ const Register = () => {
       navigate("/login");
       toast.success("User successfully registered");
     } catch (err) {
-      console.log(err);
-      toast.error(err.data.message);
+      toast.error("failed to register, try again.");
     }
   };
 

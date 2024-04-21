@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import {
   AiOutlineHome,
   AiOutlineShopping,
@@ -87,7 +88,7 @@ const Navigation = () => {
       setDropdownOpen(false);
       toggleScroll();
     } catch (error) {
-      console.error(error);
+      toast.error("failed to logout, try again.")
     }
   };
 

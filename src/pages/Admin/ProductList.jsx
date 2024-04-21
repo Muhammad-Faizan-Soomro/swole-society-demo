@@ -98,7 +98,7 @@ const ProductList = () => {
       }
     } catch (error) {
       setLoading(false);
-      toast.error(error?.data?.message || error.error);
+      toast.error("Product create failed. Try Again.");
     }
   };
 

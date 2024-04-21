@@ -37,13 +37,12 @@ const CategoryList = () => {
     try {
       const result = await createCategory({ name }).unwrap();
       if (result.error) {
-        toast.error(result.error);
+        toast.error("Error Creating Category, try again.");
       } else {
         setName("");
         toast.success(`${result.data.name} is created.`);
       }
     } catch (error) {
-      console.error(error);
       toast.error("Creating category failed, try again.");
     }
   };
@@ -65,7 +64,7 @@ const CategoryList = () => {
       }).unwrap();
 
       if (result.error) {
-        toast.error(result.error);
+        toast.error("Error updating category, try again.");
       } else {
         toast.success(`${result.data.name} is updated`);
         setSelectedCategory(null);
@@ -73,7 +72,7 @@ const CategoryList = () => {
         setModalVisible(false);
       }
     } catch (error) {
-      console.error(error);
+      toast.error("Error updating category, try again.");
     }
   };
 
@@ -82,14 +81,13 @@ const CategoryList = () => {
       const result = await deleteCategory(selectedCategory._id).unwrap();
 
       if (result.error) {
-        toast.error(result.error);
+        toast.error("Error deleting category, try again.");
       } else {
         toast.success(`${result.message}.`);
         setSelectedCategory(null);
         setModalVisible(false);
       }
     } catch (error) {
-      console.error(error);
       toast.error("Category delection failed. Try again.");
     }
   };

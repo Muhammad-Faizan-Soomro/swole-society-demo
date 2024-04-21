@@ -35,7 +35,7 @@ const PlaceOrder = () => {
       dispatch(clearCartItems());
       navigate(`/order/${res.data._id}`);
     } catch (error) {
-      toast.error(error);
+      toast.error("Can not place order, try again.");
     }
   };
 
@@ -111,7 +111,7 @@ const PlaceOrder = () => {
               </li>
             </ul>
 
-            {error && <Message variant="danger">{error.data.message}</Message>}
+            {error && <Message variant="danger">Some Error Occurred! Kindly Try Again.</Message>}
 
             <div>
               <h2 className="text-2xl font-semibold mb-4 mt-4 lg:mt-0">
