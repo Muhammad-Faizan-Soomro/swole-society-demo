@@ -102,7 +102,7 @@ const ProductDetails = () => {
             {sizeDiv ? (
               <div className="flex flex-col ml-2 gap-y-3 mt-2">
                 <img
-                  src="https://res.cloudinary.com/dq69j0hgr/image/upload/v1713725823/1713724980166_1_w9erkp.webp"
+                  src="https://res.cloudinary.com/dq69j0hgr/image/upload/v1713726892/1713724980166_q1abfd.jpg"
                   alt="Size Chart"
                   className="h-[65vh] w-[90%] lg:ml-0 ml-2"
                 />
@@ -116,7 +116,7 @@ const ProductDetails = () => {
             ) : (
               <div className="flex flex-col ml-2 gap-y-3">
                 <h2 className="lg:text-xl lg:ml-0 font-semibold mt-3">
-                  Batman compression tee
+                  {product.data.name}
                 </h2>
 
                 <p className="text-2xl lg:text-3xl lg:font-extrabold font-semibold ">
@@ -124,12 +124,7 @@ const ProductDetails = () => {
                 </p>
 
                 <p className="xl:w-[35vw] lg:w-[35vw] text-black opacity-85 lg:ml-0">
-                  The compression fabric locks in warmth and provides a snug fit
-                  to keep you comfortable and protected in cooler climates..
-                  Made from high quality fabric, this compression shirt offers
-                  enhanced fit and breathability for optimal performance. -
-                  Ultra tight fit - Second skin feel - Rapid moisture absorption
-                  for quick sweat evaporation.{" "}
+                {product.data.description}
                 </p>
 
                 <h1 className="flex items-center mt-4 lg:-mx-24 ml-2 lg:ml-0">
