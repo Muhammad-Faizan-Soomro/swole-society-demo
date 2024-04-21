@@ -6,12 +6,8 @@ import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 
 const ProductCard = ({ p }) => {
-  const [color, setColor] = useState("black");
+  const [color, setColor] = useState("small");
   const dispatch = useDispatch();
-
-  // useEffect(()=>{
-  //   localStorage.setItem('colors', "black");
-  // },[])
 
   const addToCartHandler = (product, qty) => {
     console.log(product);
@@ -19,10 +15,10 @@ const ProductCard = ({ p }) => {
     toast.success("Item added successfully");
   };
 
-  const changeColor = (color)=>{
-    setColor(color)
-    localStorage.setItem('colors',color)
-  }
+  const changeColor = (color) => {
+    setColor(color);
+    localStorage.setItem("colors", color);
+  };
 
   return (
     <div className="relative bg-white rounded-lg shadow">
@@ -30,7 +26,7 @@ const ProductCard = ({ p }) => {
         <Link to={`/product/${p._id}`}>
           <img
             className="cursor-pointer w-full"
-            src={color == "black" ? p.image[0].url : p.image[2].url}
+            src={p.image[0].url}
             alt={p.name}
             style={{ height: "170px", objectFit: "cover" }}
           />
@@ -53,16 +49,24 @@ const ProductCard = ({ p }) => {
           {p?.description?.substring(0, 60)} ...
         </p>
 
-        <div className="flex items-center">
-          Colors:{" "}
+        <div className="flex items-center gap-4">
+          Size:{" "}
           <div
-            onClick={() => changeColor("black")}
-            className={`${color == 'black' ? 'border-2 border-red-500' : ""} font-bold bg-black rounded-full font-mono w-4 h-4 right-0 absolute hover:cursor-pointer hover:border-red-500 hover:border-2 `}
-          />
+            onClick={() => changeColor("small")}
+            className={`${
+              color == "small" ? "border-2 border-black p-1" : ""
+            } text-xs p-1 cursor-pointer`}
+          >
+            Small
+          </div>
           <div
-            onClick={() => changeColor("white")}
-            className={`${color == 'white' ? 'border-2 border-red-500' : ""} font-bold bg-stone-200 rounded-full font-mono w-4 h-4 right-0 absolute mr-5 hover:cursor-pointer hover:border-red-500 hover:border-2`}
-          />
+            onClick={() => changeColor("medium")}
+            className={`${
+              color == "medium" ? "border-2 border-black p-1" : ""
+            } text-xs p-1 cursor-pointer`}
+          >
+            Medium
+          </div>
         </div>
 
         <section className="flex justify-between items-center">

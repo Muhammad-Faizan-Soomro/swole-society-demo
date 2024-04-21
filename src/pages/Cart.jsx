@@ -47,11 +47,7 @@ const Cart = () => {
                 <div key={id} className="flex items-center mb-[1rem] pb-2">
                   <div className="w-[5rem] h-[5rem]">
                     <img
-                      src={
-                        item.colors == "black"
-                          ? item.data.image[0].url
-                          : item.data.image[2].url
-                      }
+                      src={item.data.image[0].url}
                       alt={item.data.name}
                       className="w-full h-full object-cover rounded"
                     />

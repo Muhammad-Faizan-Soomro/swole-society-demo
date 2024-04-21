@@ -21,7 +21,7 @@ import ProductTabs from "./ProductTabs";
 import { addToCart } from "../../redux/features/cart/cartSlice";
 
 const ProductDetails = () => {
-  const colors = localStorage.getItem("colors") || "";
+  const [colors, setColors] = useState(localStorage.getItem("colors") || "");
   const { id: productId } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -64,10 +64,8 @@ const ProductDetails = () => {
   };
 
   const changeColor = (color) => {
-    if (!(colors == color)) {
-      localStorage.setItem("colors", color);
-      location.replace(location.href);
-    }
+    setColors(color);
+    localStorage.setItem("colors", color);
   };
 
   return (
@@ -94,11 +92,7 @@ const ProductDetails = () => {
           <div className="flex flex-col lg:grid lg:grid-cols-2 lg:relative mt-[2rem] lg:ml-[8rem] overflow-hidden">
             <div>
               <img
-                src={
-                  colors == "black"
-                    ? product.data.image[0].url
-                    : product.data.image[2].url
-                }
+                src={product.data.image[0].url}
                 alt={product.data.name}
                 className="w-[90vw] xl:w-[50rem] lg:w-[45rem] lg:mb-4 m-2 mx-auto lg:mx-0"
               />
@@ -123,19 +117,23 @@ const ProductDetails = () => {
               </h1>
 
               <div className="flex items-center mt-4">
-                <div className="mr-16">Colors: </div>
+                <div className="mr-16">Size: </div>
                 <div
-                  onClick={() => changeColor("black")}
+                  onClick={() => changeColor("small")}
                   className={`${
-                    colors == "black" ? "border-2 border-red-500" : ""
-                  } font-bold bg-black rounded-full font-mono w-4 h-4 hover:cursor-pointer hover:border-red-500 hover:border-2 `}
-                />
+                    colors == "small" ? "border-2 border-black p-1" : ""
+                  } text-xs p-1 cursor-pointer`}
+                >
+                  Small
+                </div>
                 <div
-                  onClick={() => changeColor("white")}
+                  onClick={() => changeColor("medium")}
                   className={`${
-                    colors == "white" ? "border-2 border-red-500" : ""
-                  } font-bold bg-stone-200 rounded-full font-mono w-4 h-4 ml-2 hover:cursor-pointer hover:border-red-500 hover:border-2`}
-                />
+                    colors == "medium" ? "border-2 border-black p-1" : ""
+                  } text-xs p-1 cursor-pointer`}
+                >
+                  Medium
+                </div>
               </div>
             </div>
 
