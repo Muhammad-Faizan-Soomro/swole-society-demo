@@ -8,6 +8,7 @@ import {
 } from "../../redux/api/productApiSlice";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
+import ProductCarousel from "./ProductCarousel";
 import {
   FaBox,
   FaClock,
@@ -92,11 +93,7 @@ const ProductDetails = () => {
         <>
           <div className="flex flex-col lg:grid lg:grid-cols-2 lg:relative mt-[2rem] lg:ml-[8rem] overflow-hidden">
             <div>
-              <img
-                src={product.data.image[0].url}
-                alt={product.data.name}
-                className="w-[90vw] xl:w-[50rem] lg:w-[45rem] lg:mb-4 m-2 mx-auto lg:mx-0"
-              />
+            {ProductCarousel(product)}
             </div>
 
             {sizeDiv ? (
