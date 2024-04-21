@@ -98,16 +98,16 @@ const ProductDetails = () => {
               />
             </div>
 
-            <div className="flex flex-col self-start lg:grid lg:grid-rows-2 lg:grid-cols-2 lg:ml-4 ml-2">
-              <h2 className="lg:text-2xl ml-2 lg:ml-0 font-semibold mt-3">
+            <div className="flex flex-col ml-2 gap-y-3">
+              <h2 className="lg:text-xl ml-2 lg:ml-0 font-semibold mt-3">
                 {product.data.name}
               </h2>
 
-              <p className="text-2xl lg:text-4xl lg:font-extrabold lg:-mx-24 right-0 absolute mx-6 font-semibold lg:left-0 lg:relative">
+              <p className="text-2xl lg:text-3xl lg:font-extrabold font-semibold">
                 PKR {product.data.price}
               </p>
 
-              <p className="mt-5 xl:w-[35rem] lg:w-[35rem] md:w-[30rem] text-black opacity-85 ml-2 lg:ml-0">
+              <p className="xl:w-[35rem] lg:w-[35rem] md:w-[30rem] text-black opacity-85 ml-2 lg:ml-0">
                 {product.data.description}
               </p>
 
@@ -116,24 +116,29 @@ const ProductDetails = () => {
                 {product.data.countInStock}
               </h1>
 
-              <div className="flex items-center mt-4">
+              <div className="flex items-center mt-4 gap-4">
                 <div className="mr-16">Size: </div>
                 <div
                   onClick={() => changeColor("small")}
                   className={`${
-                    colors == "small" ? "border-2 border-black p-1" : ""
-                  } text-xs p-1 cursor-pointer`}
+                    colors == "small"
+                      ? "p-1 bg-black text-white"
+                      : "border-2 border-black"
+                  } text-sm p-1 cursor-pointer`}
                 >
                   Small
                 </div>
                 <div
                   onClick={() => changeColor("medium")}
                   className={`${
-                    colors == "medium" ? "border-2 border-black p-1" : ""
+                    colors == "medium"
+                      ? "bg-black text-white p-1"
+                      : "border-2 border-black"
                   } text-xs p-1 cursor-pointer`}
                 >
                   Medium
                 </div>
+                <div className="line-through border-2 border-black">Large</div>
               </div>
             </div>
 

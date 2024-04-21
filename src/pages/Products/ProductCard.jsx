@@ -49,26 +49,6 @@ const ProductCard = ({ p }) => {
           {p?.description?.substring(0, 60)} ...
         </p>
 
-        <div className="flex items-center gap-4">
-          Size:{" "}
-          <div
-            onClick={() => changeColor("small")}
-            className={`${
-              color == "small" ? "border-2 border-black p-1" : ""
-            } text-xs p-1 cursor-pointer`}
-          >
-            Small
-          </div>
-          <div
-            onClick={() => changeColor("medium")}
-            className={`${
-              color == "medium" ? "border-2 border-black p-1" : ""
-            } text-xs p-1 cursor-pointer`}
-          >
-            Medium
-          </div>
-        </div>
-
         <section className="flex justify-between items-center">
           <Link
             to={`/product/${p._id}`}
