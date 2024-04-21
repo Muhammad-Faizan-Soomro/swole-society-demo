@@ -29,7 +29,7 @@ const ProductCarousel = (product) => {
             <img
               src={image.url}
               alt="image"
-              className="w-full rounded-lg h-[30rem]"
+              className="w-full rounded-lg object-contain h-[30rem]"
             />
           </div>
         ))}

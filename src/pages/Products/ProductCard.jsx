@@ -21,14 +21,14 @@ const ProductCard = ({ p }) => {
   };
 
   return (
-    <div className="relative bg-white rounded-lg shadow">
+    <div className="relative bg-white rounded-lg shadow-lg shadow-black p-3">
       <section className="relative">
         <Link to={`/product/${p._id}`}>
           <img
             className="cursor-pointer w-full"
             src={p.image[0].url}
             alt={p.name}
-            style={{ height: "170px", objectFit: "cover" }}
+            style={{ height: "50vh", objectFit: "contain" }}
           />
         </Link>
       </section>

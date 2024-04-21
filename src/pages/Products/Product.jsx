@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
   return (
-    <div className="p-3 relative">
+    <div className="p-3 border-2 shadow-lg shadow-black border-black m-2 relative">
       <div className="relative">
         <img
           src={product.image[0].url}
           alt={product.name}
-          className="w-[30rem] rounded"
+          className="w-full h-[50vh] object-contain rounded"
         />
         {/* <HeartIcon product={product} /> */}
       </div>
