@@ -53,9 +53,7 @@ const Order = () => {
                     </th>
                     <th className="px-1 py-2 text-left font-bold">Product</th>
                     <th className="px-1 py-2 text-left font-bold">Quantity</th>
-                    <th className="px-1 py-2 text-left font-bold">
-                      Price
-                    </th>
+                    <th className="px-1 py-2 text-left font-bold">Price</th>
                     <th className="px-1 py-2 text-left font-bold">Total</th>
                   </tr>
                 </thead>
@@ -139,15 +137,11 @@ const Order = () => {
           </div>
           <div className="flex justify-between mb-2">
             <span>Shipping</span>
-            <span>PKR {order.data.shippingPrice}</span>
-          </div>
-          <div className="flex justify-between mb-2">
-            <span>Tax</span>
-            <span>PKR {order.data.taxPrice}</span>
+            <span>PKR 250</span>
           </div>
           <div className="flex justify-between mb-2">
             <span>Total</span>
-            <span>PKR {order.data.totalPrice}</span>
+            <span>PKR {order.data.itemsPrice + 250}</span>
           </div>
 
           {loadingDeliver && <Loader />}

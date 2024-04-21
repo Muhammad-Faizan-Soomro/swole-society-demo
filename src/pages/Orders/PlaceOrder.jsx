@@ -30,8 +30,6 @@ const PlaceOrder = () => {
         shippingAddress: cart.shippingAddress,
         paymentMethod: cart.paymentMethod,
         itemsPrice: cart.itemsPrice,
-        shippingPrice: cart.shippingPrice,
-        taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,
       }).unwrap();
       dispatch(clearCartItems());
@@ -58,6 +56,7 @@ const PlaceOrder = () => {
                   </td>
                   <td className="px-1 py-2 text-left font-bold">Product</td>
                   <td className="px-1 py-2 text-left font-bold">Quantity</td>
+                  <td className="px-1 py-2 text-left font-bold">Size</td>
                   <td className="px-1 py-2 text-left font-bold">Price</td>
                   <td className="px-1 py-2 text-left font-bold">Total</td>
                 </tr>
@@ -68,7 +67,7 @@ const PlaceOrder = () => {
                   <tr key={index}>
                     <td className="p-2">
                       <img
-                        src={item.data.image}
+                        src={item.data.image[0].url}
                         alt={item.data.name}
                         className="w-16 h-16 object-cover"
                       />
@@ -80,6 +79,7 @@ const PlaceOrder = () => {
                       </Link>
                     </td>
                     <td className="p-2">{item.qty}</td>
+                    <td className="p-2">{item.colors}</td>
                     <td className="p-2">{item.data.price.toFixed(2)}</td>
                     <td className="p-2">
                       PKR {(item.qty * item.data.price).toFixed(2)}
@@ -104,9 +104,6 @@ const PlaceOrder = () => {
               <li className="mb-2">
                 <span className="font-semibold">Shipping:</span> PKR{" "}
                 {cart.shippingPrice}
-              </li>
-              <li className="mb-2">
-                <span className="font-semibold">Tax:</span> PKR {cart.taxPrice}
               </li>
               <li className="mb-2">
                 <span className="font-semibold">Total:</span> PKR{" "}

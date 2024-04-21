@@ -59,7 +59,7 @@ const OrderList = () => {
                         : "N/A"}
                     </td>
 
-                    <td className="hidden lg:block">PKR {order.totalPrice}</td>
+                    <td className="hidden lg:block">PKR {order.itemsPrice + 250}</td>
 
                     <td className="px-2 py-2">
                       {order.isDelivered ? (
