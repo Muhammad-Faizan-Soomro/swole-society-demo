@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Messsage from "../../components/Message";
 import Loader from "../../components/Loader";
+import { useGetUserDetailsQuery } from "../../redux/api/usersApiSlice";
 import {
   useDeliverOrderMutation,
   useGetOrderDetailsQuery,
@@ -19,6 +20,10 @@ const Order = () => {
     isLoading,
     error,
   } = useGetOrderDetailsQuery(orderId);
+
+  const { data: userOrderName } = useGetUserDetailsQuery(
+    order?.data?.user?._id
+  );
 
   const [deliverOrder, { isLoading: loadingDeliver }] =
     useDeliverOrderMutation();
@@ -97,7 +102,7 @@ const Order = () => {
 
             <p className="mb-4">
               <strong className="text-pink-500">Name:</strong>{" "}
-              {userInfo.data.user.firstName} {userInfo.data.user.lastName}
+              {userOrderName?.data?.firstName} {userOrderName?.data?.lastName}
             </p>
 
             <p className="mb-4">

@@ -7,7 +7,6 @@ import { useEffect } from "react";
 
 const OrderList = () => {
   const { data: orders, isLoading, error, refetch } = useGetOrdersQuery();
-  const { userInfo } = useSelector((state) => state.auth);
 
   useEffect(() => {
     refetch();
@@ -28,7 +27,6 @@ const OrderList = () => {
               <thead className="border-2 border-black">
                 <tr className="">
                   <th className="text-left pl-1">ITEMS</th>
-                  <th className="text-left pl-1 hidden lg:block">USER</th>
                   <th className="text-left pl-1">DATE</th>
                   <th className="text-left pl-1 hidden lg:block">TOTAL</th>
                   <th className="text-left pl-1">DELIVERED</th>
@@ -45,12 +43,6 @@ const OrderList = () => {
                         alt={order._id}
                         className="w-[3rem] lg:w-16 h-[3rem] lg:h-16 object-cover"
                       />
-                    </td>
-
-                    <td className="hidden lg:block">
-                      {userInfo
-                        ? `${userInfo.data.user.firstName} ${userInfo.data.user.lastName}`
-                        : "N/A"}
                     </td>
 
                     <td>
