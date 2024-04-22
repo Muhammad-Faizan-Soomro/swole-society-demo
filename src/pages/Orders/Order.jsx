@@ -119,6 +119,11 @@ const Order = () => {
             </p>
 
             <p className="mb-4">
+              <strong className="text-pink-500">Contact #:</strong>{" "}
+              {order.data.shippingAddress.phoneNumber}
+            </p>
+
+            <p className="mb-4">
               <strong className="text-pink-500">
                 Method: <span className="text-black">Cash On Delivery</span>
               </strong>

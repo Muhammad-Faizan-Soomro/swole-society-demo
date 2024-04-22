@@ -17,6 +17,9 @@ const Shipping = () => {
   const [postalCode, setPostalCode] = useState(
     shippingAddress.postalCode || ""
   );
+  const [phoneNumber, setPhoneNumber] = useState(
+    shippingAddress.phoneNumber || ""
+  );
   const [country, setCountry] = useState(shippingAddress.country || "");
 
   const dispatch = useDispatch();
@@ -25,7 +28,9 @@ const Shipping = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    dispatch(saveShippingAddress({ address, city, postalCode, country }));
+    dispatch(
+      saveShippingAddress({ address, city, postalCode, country, phoneNumber })
+    );
     dispatch(savePaymentMethod(paymentMethod));
     navigate("/placeorder");
   };
@@ -63,6 +68,17 @@ const Shipping = () => {
               value={city}
               required
               onChange={(e) => setCity(e.target.value)}
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-black mb-2">Contact Number</label>
+            <input
+              type="Number"
+              className="w-[70vw] lg:w-full p-2 border-2 border-black rounded"
+              placeholder="Enter Contact Number"
+              value={phoneNumber}
+              required
+              onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </div>
           <div className="mb-4">

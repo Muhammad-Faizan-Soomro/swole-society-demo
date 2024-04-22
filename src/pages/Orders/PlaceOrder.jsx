@@ -111,7 +111,11 @@ const PlaceOrder = () => {
               </li>
             </ul>
 
-            {error && <Message variant="danger">Some Error Occurred! Kindly Try Again.</Message>}
+            {error && (
+              <Message variant="danger">
+                Some Error Occurred! Kindly Try Again.
+              </Message>
+            )}
 
             <div>
               <h2 className="text-2xl font-semibold mb-4 mt-4 lg:mt-0">
@@ -121,6 +125,9 @@ const PlaceOrder = () => {
                 <strong>Address:</strong> {cart.shippingAddress.address},{" "}
                 {cart.shippingAddress.city} {cart.shippingAddress.postalCode},{" "}
                 {cart.shippingAddress.country}
+              </p>
+              <p className="mt-2">
+                <strong>Contact #:</strong> {cart.shippingAddress.phoneNumber}
               </p>
             </div>
 
