@@ -1,10 +1,6 @@
 {
     "rewrites": [
       {
-        "source": "/api/(.*)",
-        "destination": "https://swole-society-api-demo.vercel.app/api/$1"
-      },
-      {
         "source": "/(.*)",
         "destination": "/$1"
       }
