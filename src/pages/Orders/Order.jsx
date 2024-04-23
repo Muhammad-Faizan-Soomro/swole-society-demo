@@ -58,6 +58,7 @@ const Order = () => {
                     </th>
                     <th className="px-1 py-2 text-left font-bold">Product</th>
                     <th className="px-1 py-2 text-left font-bold">Quantity</th>
+                    <th className="px-1 py-2 text-left font-bold">Size</th>
                     <th className="px-1 py-2 text-left font-bold">Price</th>
                     <th className="px-1 py-2 text-left font-bold">Total</th>
                   </tr>
@@ -79,6 +80,7 @@ const Order = () => {
                       </td>
 
                       <td className="p-2">{item.qty}</td>
+                      <td className="p-2">{item.colors}</td>
                       <td className="p-2">{item.price}</td>
                       <td className="p-2">
                         PKR {(item.qty * item.price).toFixed(2)}
