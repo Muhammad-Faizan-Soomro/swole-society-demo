@@ -21,13 +21,18 @@ const Order = () => {
     error,
   } = useGetOrderDetailsQuery(orderId);
 
-  const { data: userOrderName } = useGetUserDetailsQuery(
-    order?.data?.user?._id
-  );
-
   const [deliverOrder, { isLoading: loadingDeliver }] =
     useDeliverOrderMutation();
   const { userInfo } = useSelector((state) => state.auth);
+
+  let userWhoOrderName;
+
+  if (userInfo && userInfo.data.user.isAdmin) {
+    const { data: userOrderName } = useGetUserDetailsQuery(
+      order?.data?.user?._id
+    );
+    userWhoOrderName = userOrderName;
+  }
 
   function onError(err) {
     toast.error(err.message);
@@ -104,7 +109,9 @@ const Order = () => {
 
             <p className="mb-4">
               <strong className="text-pink-500">Name:</strong>{" "}
-              {userOrderName?.data?.firstName} {userOrderName?.data?.lastName}
+              {userInfo && userInfo.data.user.isAdmin && userWhoOrderName
+                ? `${userWhoOrderName?.data?.firstName} ${userWhoOrderName?.data?.lastName}`
+                : `${userInfo.data.user.firstName} ${userInfo.data.user.lastName}`}
             </p>
 
             <p className="mb-4">
