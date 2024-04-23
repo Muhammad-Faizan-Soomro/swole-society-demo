@@ -187,8 +187,8 @@ const ProductDetails = () => {
                   <div className="btn-container">
                     <button
                       onClick={addToCartHandler}
-                      disabled={product.data.countInStock === 0}
-                      className="bg-pink-600 text-white py-2 px-4 rounded-lg md:mt-0 hover:bg-pink-900"
+                      disabled={product.data.countInStock === 0 || colors == ""}
+                      className="bg-pink-600 text-white py-2 px-4 rounded-lg md:mt-0 hover:bg-pink-900 disabled:bg-pink-400 disabled:cursor-not-allowed cursor-pointer"
                     >
                       Add To Cart
                     </button>

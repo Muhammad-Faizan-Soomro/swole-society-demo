@@ -34,7 +34,7 @@ const Login = () => {
       dispatch(setCredentials({ ...res }));
       navigate(redirect);
     } catch (err) {
-      toast.error("failed to login, try again.");
+      toast.error("Please Provide Correct Email/Password");
     }
   };
 
@@ -80,9 +80,9 @@ const Login = () => {
             </div>
 
             <button
-              disabled={isLoading}
+              disabled={isLoading || email == "" || password == ""}
               type="submit"
-              className="bg-pink-500 text-white px-4 py-2 rounded cursor-pointer my-[1rem] hover:bg-pink-900"
+              className="bg-pink-500 disabled:bg-pink-300 disabled:cursor-not-allowed text-white px-4 py-2 rounded cursor-pointer my-[1rem] hover:bg-pink-900"
             >
               {isLoading ? "Signing In..." : "Sign In"}
             </button>

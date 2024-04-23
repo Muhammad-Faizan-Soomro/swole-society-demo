@@ -107,9 +107,9 @@ const Register = () => {
           </div>
 
           <button
-            disabled={isLoading}
+            disabled={isLoading || email == "" || password == "" || firstName == "" || lastName == ""}
             type="submit"
-            className="bg-pink-500 text-white px-4 py-2 rounded cursor-pointer my-[1rem] hover:bg-pink-900"
+            className="bg-pink-500 disabled:cursor-not-allowed disabled:bg-pink-300 text-white px-4 py-2 rounded cursor-pointer my-[1rem] hover:bg-pink-900"
           >
             {isLoading ? "Registering..." : "Register"}
           </button>

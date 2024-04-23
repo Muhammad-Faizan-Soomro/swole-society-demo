@@ -91,8 +91,8 @@ const ProductTabs = ({
                 </div>
                 <button
                   type="submit"
-                  disabled={loadingProductReview}
-                  className="bg-pink-600 text-white py-2 px-4 rounded-lg hover:bg-pink-900 ml-4 lg:ml-0"
+                  disabled={loadingProductReview || rating == "" || comment == ""}
+                  className="bg-pink-600 disabled:bg-pink-300 cursor-pointer disabled:cursor-not-allowed text-white py-2 px-4 rounded-lg hover:bg-pink-900 ml-4 lg:ml-0"
                 >
                   Submit
                 </button>

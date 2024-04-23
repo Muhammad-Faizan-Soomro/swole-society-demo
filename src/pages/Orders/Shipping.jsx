@@ -84,7 +84,7 @@ const Shipping = () => {
           <div className="mb-4">
             <label className="block text-black mb-2">Postal Code</label>
             <input
-              type="text"
+              type="Number"
               className="w-[70vw] lg:w-full p-2 border-2 border-black rounded"
               placeholder="Enter postal code"
               value={postalCode}
@@ -105,8 +105,9 @@ const Shipping = () => {
           </div>
 
           <button
-            className="bg-pink-500 text-white py-2 px-4 rounded-full text-lg w-[70vw] lg:w-full hover:bg-pink-900"
+            className="bg-pink-500 disabled:bg-pink-300 cursor-pointer disabled:cursor-not-allowed text-white py-2 px-4 rounded-full text-lg w-[70vw] lg:w-full hover:bg-pink-900"
             type="submit"
+            disabled={address == "" || city == "" || postalCode == "" || phoneNumber == "" || country == ""}
           >
             Continue
           </button>
